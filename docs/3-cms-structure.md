@@ -198,6 +198,10 @@ projects
    ↓ (via slug)
 artworks
 
+artworks
+   ↓ (via category_slug)
+categories
+
 projects
    ↓ (via category_slug)
 categories
