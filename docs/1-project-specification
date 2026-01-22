@@ -1,0 +1,131 @@
+# Project Spec: Kata Portfolio Website
+
+## Objective
+
+Build a minimalist, artwork-first portfolio website for an illustrator.
+
+The homepage focuses on visual exploration using a masonry grid of artworks.
+Projects exist as secondary narrative layers that users can choose to open.
+
+The system must support:
+
+- CMS-driven content via Supabase
+- instant content updates (no redeploy)
+- clean, professional, minimal design
+- scalable frontend architecture
+
+This is a production-grade portfolio, not an experiment.
+
+---
+
+## Design Direction (FIXED)
+
+The design direction is already defined another md file and must NOT be changed.
+
+---
+
+## Tech Stack
+
+### Frontend
+
+- React (Vite)
+- JavaScript
+- Tailwind CSS
+
+### Backend / CMS
+
+- Supabase (database + auth)
+- No custom backend
+- No admin panel inside the site
+
+### Hosting
+
+- GitHub (source control)
+- Vercel (deployment)
+
+---
+
+## Data Flow (IMPORTANT)
+
+- Homepage loads published artworks only
+- Filtering is done by artwork.category
+- Clicking artwork opens fullscreen overlay
+- Overlay supports horizontal scrolling between artworks
+- “View project” navigates to project detail page
+- Project page loads project + its artworks
+- Content updates appear instantly (no redeploy)
+
+---
+
+## Security & Access
+
+- Public frontend uses Supabase anon key
+- RLS enforces published-only visibility
+- No secrets exposed
+- No write access from frontend
+- Content edited only via Supabase Studio
+
+---
+
+## Commands
+
+- Dev: `npm run dev`
+- Build: `npm run build`
+- Preview: `npm run preview`
+
+---
+
+## Project Structure (recommended)
+
+- `src/`
+  - `components/`
+  - `pages/`
+  - `layouts/`
+  - `hooks/`
+  - `services/` (Supabase queries)
+  - `styles/`
+- `docs/`
+- `public/`
+
+---
+
+## Boundaries
+
+### ✅ Always
+
+- Respect the defined CMS structure
+- Keep design minimal
+- Prioritize artworks over UI
+- Follow existing data flow
+- Keep components small and readable
+
+### ⚠️ Ask before
+
+- Changing data schemas
+- Introducing new libraries
+- Adding authentication flows
+- Changing navigation structure
+- Modifying CMS logic
+
+### 🚫 Never
+
+- Change CMS architecture
+- Introduce admin panel UI
+- Hardcode content
+- Commit environment variables
+- Alter design direction
+- Replace masonry or overlay concept
+
+---
+
+## Success Criteria
+
+The MVP is successful when:
+
+- artworks load correctly from Supabase
+- homepage exploration works smoothly
+- fullscreen overlay works on desktop and mobile
+- project pages render correctly
+- Kata can update content without developer help
+
+Polish, animations, and enhancements come after MVP stability.

@@ -1,0 +1,21 @@
+/* Google Fonts - must be first */
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* Custom Theme */
+@theme {
+  --font-sans: "Bricolage Grotesque", sans-serif;
+  --font-serif: "Bitter", serif;
+
+  --color-accent: #7E85F2;
+  --color-accent-light: #9BA1F5;
+  --color-accent-dark: #6169E8;
+}
+
+/* Base styles */
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
