@@ -55,6 +55,15 @@ The entire website is built around a **masonry grid system**.
 - Rhythm should feel organic
 - Grid must never feel rigid or mechanical
 
+#### Responsive Columns:
+
+| Screen | Columns |
+|--------|---------|
+| Mobile | 2 |
+| Tablet (md: 768px) | 3 |
+| Desktop (lg: 1024px) | 4 |
+| Large (xl: 1280px) | 5 |
+
 > The masonry layout is a defining characteristic of the site.
 
 ### Page Rhythm
