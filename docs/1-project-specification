@@ -129,3 +129,36 @@ The MVP is successful when:
 - Kata can update content without developer help
 
 Polish, animations, and enhancements come after MVP stability.
+
+---
+
+## Database Ownership Strategy
+
+### During Development (Now)
+
+- Developer creates Supabase project under their own account
+- Project: `portfolio-illustration-kata`
+- Developer has full admin access for building and testing
+
+### After Project Delivery (Later)
+
+1. Customer creates her own Supabase account
+2. KatCustomera creates her organization (e.g., `kata-studio`)
+3. Developer transfers the project to Kata's organization
+4. Kata becomes sole owner
+5. Developer access is removed
+
+### Why This Approach?
+
+- **For development:** Fast iteration, full control, easy testing
+- **For client:** Full ownership of data, no dependency on developer
+- **Professional:** Clear handover process, client independence
+
+### Transfer Process
+
+1. Supabase Dashboard → Project Settings → General
+2. "Transfer Project" → Select Kata's organization
+3. Confirm transfer
+4. Kata verifies access, developer loses access
+
+> **Note:** A detailed customer guide for Supabase usage will be created separately.
