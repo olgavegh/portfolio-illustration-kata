@@ -110,7 +110,7 @@ The system supports three responsive sizes:
 - Subdued
 - Artwork-focused
 
-**Color must never compete with ceramic textures or photography.**
+**Color must never compete with images.**
 
 ### Primary Accent Color:
 

@@ -47,6 +47,8 @@ artworks
 ├─ title (text)
 ├─ image (text/url)
 ├─ description (text)
+├─ year (int)
+├─ category_slug (text)
 ├─ published (boolean)
 ├─ order_index (int)
 └─ created_at (timestamp)
