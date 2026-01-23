@@ -32,7 +32,6 @@ CREATE TABLE artworks (
   project_slug TEXT,
   title TEXT NOT NULL,
   image TEXT NOT NULL,
-  description TEXT,
   year INTEGER,
   category_slug TEXT,
   published BOOLEAN DEFAULT false,

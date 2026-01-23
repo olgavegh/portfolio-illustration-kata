@@ -46,7 +46,6 @@ artworks
 ├─ project_slug (text)
 ├─ title (text)
 ├─ image (text/url)
-├─ description (text)
 ├─ year (int)
 ├─ category_slug (text)
 ├─ published (boolean)
