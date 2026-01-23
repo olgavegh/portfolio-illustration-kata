@@ -75,6 +75,25 @@ The entire website is built around a **masonry grid system**.
 
 **Less page equals more focus.**
 
+### Artwork Overlay
+
+Fullscreen view for exploring artworks.
+
+#### Navigation:
+
+| Method | Availability |
+|--------|--------------|
+| Arrow buttons | Desktop only (hidden on mobile) |
+| Swipe gesture | All platforms (touch screens) |
+| Keyboard | ESC (close), ← → (navigate) |
+
+#### Content:
+
+- Large artwork image (centered)
+- Title + year below image
+- "View Project" button (if linked to project)
+- Close button (top right)
+
 ---
 
 ## 4. Breakpoints
