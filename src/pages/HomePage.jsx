@@ -3,12 +3,14 @@ import { getArtworks, getArtworksByCategory } from '../services/artworks'
 import { getCategories } from '../services/categories'
 import MasonryGrid from '../components/MasonryGrid'
 import CategoryFilter from '../components/CategoryFilter'
+import ArtworkOverlay from '../components/ArtworkOverlay'
 
 function HomePage() {
   const [artworks, setArtworks] = useState([])
   const [categories, setCategories] = useState([])
   const [activeCategory, setActiveCategory] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [selectedArtwork, setSelectedArtwork] = useState(null)
 
   // Fetch categories on mount
   useEffect(() => {
@@ -42,8 +44,15 @@ function HomePage() {
   }, [activeCategory])
 
   const handleArtworkClick = (artwork) => {
-    // Will open overlay in Phase 6
-    console.log('Clicked artwork:', artwork.title)
+    setSelectedArtwork(artwork)
+  }
+
+  const handleCloseOverlay = () => {
+    setSelectedArtwork(null)
+  }
+
+  const handleNavigate = (artwork) => {
+    setSelectedArtwork(artwork)
   }
 
   return (
@@ -59,6 +68,15 @@ function HomePage() {
         <MasonryGrid
           artworks={artworks}
           onArtworkClick={handleArtworkClick}
+        />
+      )}
+
+      {selectedArtwork && (
+        <ArtworkOverlay
+          artwork={selectedArtwork}
+          artworks={artworks}
+          onClose={handleCloseOverlay}
+          onNavigate={handleNavigate}
         />
       )}
     </div>
