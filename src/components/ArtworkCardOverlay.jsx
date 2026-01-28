@@ -5,7 +5,7 @@ function ArtworkCardOverlay({ artwork, containerSize }) {
   const [imageSize, setImageSize] = useState({ width: 0, height: 0 })
 
   const subtitleHeight = 40 // h-10 = 2.5rem = 40px
-  const horizontalMargin = 40 // mx-5 = 1.25rem * 2 = 40px
+  const horizontalMargin = 80 // mx-10 = 2.5rem * 2 = 80px
 
   // Available space for image
   const availableWidth = containerSize.width - horizontalMargin
@@ -29,10 +29,19 @@ function ArtworkCardOverlay({ artwork, containerSize }) {
     const imageRatio = imageSize.width / imageSize.height
     const containerRatio = availableWidth / availableHeight
 
+    // Peek effect: reduce width for landscape images in landscape container
+    const peekPercent = 0.15
+    let adjustedWidth = availableWidth
+
+    if (imageRatio > containerRatio && imageRatio > 1) {
+      // Landscape image would fill width - apply peek reduction
+      adjustedWidth = availableWidth * (1 - peekPercent * 2)
+    }
+
     // If image is wider relative to container, constrain by width; otherwise by height
     if (imageRatio > containerRatio) {
-      displayWidth = availableWidth
-      displayHeight = availableWidth / imageRatio
+      displayWidth = adjustedWidth
+      displayHeight = adjustedWidth / imageRatio
     } else {
       displayHeight = availableHeight
       displayWidth = availableHeight * imageRatio
@@ -41,7 +50,7 @@ function ArtworkCardOverlay({ artwork, containerSize }) {
 
   return (
     <div
-      className="shrink-0 h-full flex flex-col mx-5"
+      className="shrink-0 h-full flex flex-col mx-10"
       style={{ width: displayWidth || 'auto' }}
     >
       {/* Image container */}

@@ -16,22 +16,31 @@ function ArtworkOverlay({ artwork, artworks, onClose, onNavigate }) {
 
   // Calculate translateX to center current card
   useEffect(() => {
-    if (!trackRef.current || containerSize.width === 0) return
+    const calculatePosition = () => {
+      if (!trackRef.current || containerSize.width === 0) return
 
-    const cards = trackRef.current.children
-    if (cards.length === 0 || currentIndex < 0) return
+      const cards = trackRef.current.children
+      if (cards.length === 0 || currentIndex < 0) return
 
-    // Get the current card
-    const currentCard = cards[currentIndex]
-    if (!currentCard) return
+      // Get the current card
+      const currentCard = cards[currentIndex]
+      if (!currentCard) return
 
-    // Calculate position to center the card
-    const cardLeft = currentCard.offsetLeft
-    const cardWidth = currentCard.offsetWidth
-    const cardCenter = cardLeft + cardWidth / 2
-    const containerCenter = containerSize.width / 2
+      // Calculate position to center the card
+      const cardLeft = currentCard.offsetLeft
+      const cardWidth = currentCard.offsetWidth
+      const cardCenter = cardLeft + cardWidth / 2
+      const containerCenter = containerSize.width / 2
 
-    setTranslateX(containerCenter - cardCenter)
+      setTranslateX(containerCenter - cardCenter)
+    }
+
+    // Calculate immediately
+    calculatePosition()
+
+    // Recalculate after images load (small delay for DOM update)
+    const timeout = setTimeout(calculatePosition, 100)
+    return () => clearTimeout(timeout)
   }, [currentIndex, containerSize.width])
 
   // Navigation functions
@@ -49,9 +58,9 @@ function ArtworkOverlay({ artwork, artworks, onClose, onNavigate }) {
 
 
 
-  // swiper container padding for calculating 
-  // py-8 = 2rem * 2 = 64px total vertical padding
-  const verticalPadding = 64
+  // swiper container padding for calculating
+  // py-10 = 2.5rem * 2 = 80px total vertical padding
+  const verticalPadding = 80
 
   // Get container dimensions on mount and resize
   useEffect(() => {
