@@ -5,9 +5,10 @@ function ArtworkCardOverlay({ artwork, containerSize }) {
   const [imageSize, setImageSize] = useState({ width: 0, height: 0 })
 
   const subtitleHeight = 40 // h-10 = 2.5rem = 40px
+  const horizontalMargin = 40 // mx-5 = 1.25rem * 2 = 40px
 
   // Available space for image
-  const availableWidth = containerSize.width
+  const availableWidth = containerSize.width - horizontalMargin
   const availableHeight = containerSize.height - subtitleHeight
   console.log("width", containerSize.width, "height", containerSize.height)
 
@@ -40,7 +41,7 @@ function ArtworkCardOverlay({ artwork, containerSize }) {
 
   return (
     <div
-      className="shrink-0 h-full flex flex-col"
+      className="shrink-0 h-full flex flex-col mx-5"
       style={{ width: displayWidth || 'auto' }}
     >
       {/* Image container */}
