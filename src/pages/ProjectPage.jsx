@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getProjectBySlug } from '../services/projects'
 import { getArtworksByProject } from '../services/artworks'
+import MasonryGrid from '../components/MasonryGrid'
+import ArtworkCard from '../components/ArtworkCard'
 
 function ProjectPage() {
   const { slug } = useParams()
@@ -9,7 +11,10 @@ function ProjectPage() {
   const [artworks, setArtworks] = useState([])
   const [loading, setLoading] = useState(true)
 
+
+
   useEffect(() => {
+
     async function fetchData() {
       try {
         const [projectData, artworksData] = await Promise.all([
@@ -62,6 +67,21 @@ function ProjectPage() {
           )}
         </div>
       </div>
+
+      {/* Project artworks */}
+      {artworks.length > 0 && (
+        <div className="mt-12">
+          <MasonryGrid>
+            {artworks.map((artwork) => (
+              <ArtworkCard
+                key={artwork.id}
+                artwork={artwork}
+                showSubtitle={false}
+              />
+            ))}
+          </MasonryGrid>
+        </div>
+      )}
     </div>
   )
 }

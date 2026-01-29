@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { getArtworks, getArtworksByCategory } from '../services/artworks'
 import { getCategories } from '../services/categories'
 import MasonryGrid from '../components/MasonryGrid'
+import ArtworkCard from '../components/ArtworkCard'
 import CategoryFilter from '../components/CategoryFilter'
 import ArtworkOverlay from '../components/ArtworkOverlay'
 
@@ -65,10 +66,15 @@ function HomePage() {
       {loading ? (
         <p className="text-gray-500 text-center py-12">Loading...</p>
       ) : (
-        <MasonryGrid
-          artworks={artworks}
-          onArtworkClick={handleArtworkClick}
-        />
+        <MasonryGrid>
+          {artworks.map((artwork) => (
+            <ArtworkCard
+              key={artwork.id}
+              artwork={artwork}
+              onClick={() => handleArtworkClick(artwork)}
+            />
+          ))}
+        </MasonryGrid>
       )}
 
       {selectedArtwork && (
