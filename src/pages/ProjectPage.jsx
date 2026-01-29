@@ -4,12 +4,14 @@ import { getProjectBySlug } from '../services/projects'
 import { getArtworksByProject } from '../services/artworks'
 import MasonryGrid from '../components/MasonryGrid'
 import ArtworkCard from '../components/ArtworkCard'
+import ArtworkOverlay from '../components/ArtworkOverlay'
 
 function ProjectPage() {
   const { slug } = useParams()
   const [project, setProject] = useState(null)
   const [artworks, setArtworks] = useState([])
   const [loading, setLoading] = useState(true)
+  const [selectedArtwork, setSelectedArtwork] = useState(null)
 
 
 
@@ -77,10 +79,21 @@ function ProjectPage() {
                 key={artwork.id}
                 artwork={artwork}
                 showSubtitle={false}
+                onClick={() => setSelectedArtwork(artwork)}
               />
             ))}
           </MasonryGrid>
         </div>
+      )}
+
+      {selectedArtwork && (
+        <ArtworkOverlay
+          artwork={selectedArtwork}
+          artworks={artworks}
+          onClose={() => setSelectedArtwork(null)}
+          onNavigate={setSelectedArtwork}
+          showSubtitle={false}
+        />
       )}
     </div>
   )

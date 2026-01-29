@@ -10,7 +10,7 @@ import ArtworkCardOverlay from './ArtworkCardOverlay'
 // Keyboard - ArrowLeft, ArrowRight, Escape
 // Click buttons - prev / next arrows(already have NavArrowButton component)
 
-function ArtworkOverlay({ artwork, artworks, onClose, onNavigate }) {
+function ArtworkOverlay({ artwork, artworks, onClose, onNavigate, showSubtitle = true }) {
   const containerRef = useRef(null)
   const trackRef = useRef(null)
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 })
@@ -180,7 +180,7 @@ function ArtworkOverlay({ artwork, artworks, onClose, onNavigate }) {
             style={{ transform: `translateX(${translateX}px)` }}
           >
             {artworks.map((art) => (
-              <ArtworkCardOverlay key={art.id} artwork={art} containerSize={containerSize} />
+              <ArtworkCardOverlay key={art.id} artwork={art} containerSize={containerSize} showSubtitle={showSubtitle} />
             ))}
 
           </div>
