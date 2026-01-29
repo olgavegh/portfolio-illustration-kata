@@ -77,7 +77,9 @@ The entire website is built around a **masonry grid system**.
 
 ### Artwork Overlay
 
-Fullscreen view for exploring artworks.
+The overlay presents a centered artwork card on a semi-transparent blurred backdrop, with adjacent artworks peeking from the sides to hint at horizontal browsing.
+
+Users can navigate between artworks using arrow buttons (desktop), keyboard arrows, mouse wheel scrolling, or touch swipes, with Escape or backdrop click to close.
 
 #### Navigation:
 

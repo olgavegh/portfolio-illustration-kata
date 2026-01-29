@@ -3,6 +3,13 @@ import CloseButton from './buttons/CloseButton'
 import NavArrowButton from './buttons/NavArrowButton'
 import ArtworkCardOverlay from './ArtworkCardOverlay'
 
+// For swipe / scroll navigation, we need to handle:
+
+// Mouse wheel - deltaX(horizontal scroll) or deltaY(vertical scroll mapped to horizontal)
+// Touch swipe - touchstart, touchmove, touchend
+// Keyboard - ArrowLeft, ArrowRight, Escape
+// Click buttons - prev / next arrows(already have NavArrowButton component)
+
 function ArtworkOverlay({ artwork, artworks, onClose, onNavigate }) {
   const containerRef = useRef(null)
   const trackRef = useRef(null)
@@ -56,7 +63,73 @@ function ArtworkOverlay({ artwork, artworks, onClose, onNavigate }) {
     }
   }
 
+  // Keyboard navigation (ArrowLeft, ArrowRight, Escape)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') {
+        goToPrev()
+      } else if (e.key === 'ArrowRight') {
+        goToNext()
+      } else if (e.key === 'Escape') {
+        onClose()
+      }
+    }
 
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [currentIndex, hasPrev, hasNext])
+
+  // Mouse wheel navigation
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    let wheelTimeout = null
+
+    const handleWheel = (e) => {
+      e.preventDefault()
+
+      // Debounce to prevent rapid navigation
+      if (wheelTimeout) return
+
+      // Use deltaX for horizontal scroll, or deltaY for vertical (mapped to horizontal)
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY
+
+      if (delta > 30) {
+        goToNext()
+        wheelTimeout = setTimeout(() => { wheelTimeout = null }, 300)
+      } else if (delta < -30) {
+        goToPrev()
+        wheelTimeout = setTimeout(() => { wheelTimeout = null }, 300)
+      }
+    }
+
+    container.addEventListener('wheel', handleWheel, { passive: false })
+    return () => container.removeEventListener('wheel', handleWheel)
+  }, [currentIndex, hasPrev, hasNext])
+
+  // Touch swipe navigation
+  const touchStartX = useRef(0)
+  const touchEndX = useRef(0)
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchStartX.current - touchEndX.current
+    const minSwipeDistance = 50
+
+    if (swipeDistance > minSwipeDistance) {
+      goToNext()
+    } else if (swipeDistance < -minSwipeDistance) {
+      goToPrev()
+    }
+  }
 
   // swiper container padding for calculating
   // py-10 = 2.5rem * 2 = 80px total vertical padding
@@ -96,6 +169,9 @@ function ArtworkOverlay({ artwork, artworks, onClose, onNavigate }) {
           ref={containerRef}
           className="h-full overflow-hidden"
           style={{ paddingTop: verticalPadding / 2, paddingBottom: verticalPadding / 2 }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           {/* Swiper track */}
           <div
