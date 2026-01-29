@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import ViewProjectButton from './buttons/ViewProjectButton'
 
 function ArtworkCardOverlay({ artwork, containerSize }) {
   const subtitle = artwork.project_slug || artwork.year || null
@@ -62,13 +63,18 @@ function ArtworkCardOverlay({ artwork, containerSize }) {
           className="rounded-sm object-contain"
         />
       </div>
-      {/* Subtitle */}
-      <div className="shrink-0 mt-2">
-        {artwork.title && (
-          <p className="font-serif text-sm">{artwork.title}</p>
-        )}
-        {subtitle && (
-          <p className="text-xs text-gray-400">{subtitle}</p>
+      {/* Subtitle and View Project */}
+      <div className="shrink-0 mt-2 flex justify-between items-end">
+        <div>
+          {artwork.title && (
+            <p className="font-serif text-sm">{artwork.title}</p>
+          )}
+          {subtitle && (
+            <p className="text-xs text-gray-400">{subtitle}</p>
+          )}
+        </div>
+        {artwork.project_slug && (
+          <ViewProjectButton slug={artwork.project_slug} />
         )}
       </div>
     </div>
