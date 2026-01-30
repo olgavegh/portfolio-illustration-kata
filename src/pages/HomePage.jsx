@@ -58,6 +58,14 @@ function HomePage() {
 
   return (
     <div className="px-6 py-8">
+      {/* Hero section */}
+      <div className="mb-20 max-w-2xl">
+        <h1 className="font-serif text-2xl md:text-3xl mb-3">
+          Narrative imagery that sparks connection.<br />
+          I'm Kata, an illustrator crafting visual solutions through collaboration.
+        </h1>
+      </div>
+
       <CategoryFilter
         categories={categories}
         activeCategory={activeCategory}
