@@ -43,47 +43,39 @@ function ProjectPage() {
   }
 
   return (
-    <div className="px-6 py-8 max-w-4xl mx-auto">
-      <div className="md:flex md:gap-8">
-        {/* Left: Cover image */}
-        {project.cover_image && (
-          <div className="md:w-1/2 mb-6 md:mb-0">
-            <img
-              src={project.cover_image}
-              alt={project.title}
-              className="w-full max-h-96 object-contain rounded-sm"
-            />
-          </div>
-        )}
-        {/* Right: Text content */}
-        <div className={project.cover_image ? 'md:w-1/2' : 'w-full'}>
+    <div className="px-6 py-8">
+      {/* Header: Title left, Description right */}
+      <div className="md:flex md:justify-between md:gap-12 mb-12">
+        {/* Left: Title block */}
+        <div className="md:w-1/3 mb-6 md:mb-0">
           <h1 className="font-serif text-2xl">{project.title}</h1>
           {project.subtitle && (
             <p className="text-gray-500 mt-1">{project.subtitle}</p>
           )}
           {project.year && (
-            <p className="text-xs text-gray-400 mt-1">{project.year}</p>
-          )}
-          {project.description && (
-            <p className="mt-4">{project.description}</p>
+            <p className="text-xs text-gray-400 mt-2">{project.year}</p>
           )}
         </div>
+        {/* Right: Description */}
+        {project.description && (
+          <div className="md:w-2/3">
+            <p className="max-w-xl">{project.description}</p>
+          </div>
+        )}
       </div>
 
       {/* Project artworks */}
       {artworks.length > 0 && (
-        <div className="mt-12">
-          <MasonryGrid>
-            {artworks.map((artwork) => (
-              <ArtworkCard
-                key={artwork.id}
-                artwork={artwork}
-                showSubtitle={false}
-                onClick={() => setSelectedArtwork(artwork)}
-              />
-            ))}
-          </MasonryGrid>
-        </div>
+        <MasonryGrid>
+          {artworks.map((artwork) => (
+            <ArtworkCard
+              key={artwork.id}
+              artwork={artwork}
+              showSubtitle={false}
+              onClick={() => setSelectedArtwork(artwork)}
+            />
+          ))}
+        </MasonryGrid>
       )}
 
       {selectedArtwork && (
