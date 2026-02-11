@@ -29,7 +29,26 @@ INSERT INTO artworks (project_slug, title, image, description, year, category_sl
 
 -- PAGES
 INSERT INTO pages (slug, title, content, published) VALUES
-  ('about', 'About', '{"bio": "Kata is an illustrator artist based in Budapest. Her work explores the intersection of traditional craft and contemporary illustration.", "photo": "https://picsum.photos/seed/profile/400/400", "skills": ["Illustration", "Ceramics", "Digital Art"]}', true);
+  ('about', 'About', '{
+    "meta": {
+      "label": "Illustrator / Visual Storyteller",
+      "location": "Budapest, Hungary",
+      "availability": "Open for commissions"
+    },
+    "hero": {
+      "name": "Kata",
+      "tagline": "I believe illustration is food for the soul."
+    },
+    "content": {
+      "intro": "Working like a chef in a creative kitchen, I collaborate with clients to craft visuals that explore education, science, nature, well-being, and the human experience.",
+      "approach": "Together, we mix ideas, balance flavors, and create illustrations that truly connect—tailored to inspire and meaningful in ways that templates never could be.",
+      "closing": "Illustration is my way of speaking. Let's create something meaningful together."
+    },
+    "details": [
+      { "label": "Specialties", "value": "Education, Science, Nature, Well-being" },
+      { "label": "Available", "value": "Commissions & Collaborations" }
+    ]
+  }', true);
 
 -- SETTINGS
 INSERT INTO settings (key, value) VALUES
