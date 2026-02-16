@@ -11,7 +11,6 @@ function ArtworkCardOverlay({ artwork, containerSize, showSubtitle = true }) {
   // Available space for image
   const availableWidth = containerSize.width - horizontalMargin
   const availableHeight = containerSize.height - subtitleHeight
-  console.log("width", containerSize.width, "height", containerSize.height)
 
   // Load image natural dimensions
   useEffect(() => {
@@ -68,10 +67,10 @@ function ArtworkCardOverlay({ artwork, containerSize, showSubtitle = true }) {
         <div className="shrink-0 mt-2 flex justify-between items-end">
           <div>
             {artwork.title && (
-              <p className="font-serif text-sm">{artwork.title}</p>
+              <p className="typo-subtitle">{artwork.title}</p>
             )}
             {subtitle && (
-              <p className="text-xs text-gray-400">{subtitle}</p>
+              <p className="typo-caption">{subtitle}</p>
             )}
           </div>
           {artwork.project_slug && (

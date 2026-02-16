@@ -48,18 +48,18 @@ function ProjectPage() {
       <div className="md:flex md:justify-between md:gap-12 mb-12">
         {/* Left: Title block */}
         <div className="md:w-1/3 mb-6 md:mb-0">
-          <h1 className="font-serif text-2xl">{project.title}</h1>
+          <h1 className="typo-page-title">{project.title}</h1>
           {project.subtitle && (
-            <p className="text-gray-500 mt-1">{project.subtitle}</p>
+            <p className="typo-tagline mt-1">{project.subtitle}</p>
           )}
           {project.year && (
-            <p className="text-xs text-gray-400 mt-2">{project.year}</p>
+            <p className="typo-caption mt-2">{project.year}</p>
           )}
         </div>
         {/* Right: Description */}
         {project.description && (
           <div className="md:w-2/3">
-            <p className="max-w-xl">{project.description}</p>
+            <p className="typo-body max-w-xl">{project.description}</p>
           </div>
         )}
       </div>

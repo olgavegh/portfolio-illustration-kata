@@ -71,7 +71,7 @@ function Footer() {
           {settings.location && (
             <span className="flex items-center gap-1" title={settings.location}>
               <LocationIcon />
-              <span className="text-sm">{settings.location}</span>
+              <span className="typo-ui">{settings.location}</span>
             </span>
           )}
         </div>

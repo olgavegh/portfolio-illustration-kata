@@ -1,6 +1,6 @@
 function CategoryFilter({ categories, activeCategory, onCategoryChange }) {
   const getButtonClass = (isActive) =>
-    `px-3 py-1 text-sm rounded-full transition-colors ${
+    `px-3 py-1 typo-ui rounded-full transition-colors ${
       isActive
         ? 'bg-accent text-white'
         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'

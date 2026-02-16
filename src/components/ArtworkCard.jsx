@@ -16,10 +16,10 @@ function ArtworkCard({ artwork, onClick, showSubtitle = true }) {
       {showSubtitle && (artwork.title || subtitle) && (
         <div className="mt-2">
           {artwork.title && (
-            <p className="font-serif text-sm">{artwork.title}</p>
+            <p className="typo-subtitle">{artwork.title}</p>
           )}
           {subtitle && (
-            <p className="text-xs text-gray-400">{subtitle}</p>
+            <p className="typo-caption">{subtitle}</p>
           )}
         </div>
       )}

@@ -7,7 +7,7 @@ function Header() {
         Kataco
       </Link>
       <nav>
-        <Link to="/about" className="text-sm hover:text-accent transition-colors">
+        <Link to="/about" className="typo-ui hover:text-accent transition-colors">
           About
         </Link>
       </nav>

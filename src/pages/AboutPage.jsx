@@ -66,7 +66,7 @@ function AboutPage() {
             <dl className="space-y-3 text-sm">
               {details.map((item, index) => (
                 <div key={index}>
-                  <dt className="text-gray-400 text-xs uppercase tracking-wide">{item.label}</dt>
+                  <dt className="typo-label">{item.label}</dt>
                   <dd className="text-gray-600 mt-0.5">
                     {item.link ? (
                       <a href={item.link} className="hover:text-accent transition-colors">{item.value}</a>
@@ -84,20 +84,20 @@ function AboutPage() {
         <div className="md:col-span-2">
           {hero && (
             <div className="mb-10">
-              <h1 className="font-serif text-4xl md:text-5xl mb-3">{hero.name}</h1>
-              <p className="font-serif text-xl md:text-2xl text-gray-500">{hero.tagline}</p>
+              <h1 className="typo-hero mb-3">{hero.name}</h1>
+              <p className="typo-tagline">{hero.tagline}</p>
             </div>
           )}
 
           {meta && (
-            <p className="text-xs text-gray-400 uppercase tracking-wide mb-8">{meta.label}</p>
+            <p className="typo-label mb-8">{meta.label}</p>
           )}
 
           {content && (
-            <div className="space-y-4 text-gray-600 leading-relaxed max-w-xl">
+            <div className="typo-body space-y-4 max-w-xl">
               {content.intro && <p>{content.intro}</p>}
               {content.approach && <p>{content.approach}</p>}
-              {content.closing && <p className="text-xl md:text-2xl font-semibold text-gray-800">{content.closing}</p>}
+              {content.closing && <p className="typo-body-emphasis">{content.closing}</p>}
             </div>
           )}
         </div>
