@@ -112,19 +112,23 @@ The system supports three responsive sizes:
 
 ## 5. Typography
 
-### Approved Font Families:
+### Font Pairing:
 
-```css
---font-sans: "Bricolage Grotesque", sans-serif;
---font-serif: "Bitter", serif;
-```
+A serif + sans-serif pairing. The serif carries warmth and narrative character. The sans-serif stays clean and functional.
+
+### Feeling:
+
+- Human, not mechanical
+- Warm, not corporate
+- Restrained, not decorative
+- Readable, not stylized
 
 ### Usage Rules:
 
-- **Serif font** is used for expressive, artistic, or narrative content
-- **Sans-serif font** is used for UI, navigation, metadata, and labels
-- Typography should feel human and warm
-- Avoid sharp, technical, or corporate feeling
+- **Serif** — headings, titles, artwork labels, anything expressive or narrative
+- **Sans-serif** — body text, UI, navigation, metadata, labels
+- Hierarchy through size and weight, not through variety
+- Generous line-height on body text for calm reading rhythm
 
 > Typography must support reading and mood — never dominate layout.
 
@@ -192,7 +196,7 @@ The following decisions are **locked**:
 1. ✓ Masonry grid as primary layout
 2. ✓ Minimalist gallery tone
 3. ✓ Restrained UI
-4. ✓ Fixed typography system
+4. ✓ Restrained typography tone
 5. ✓ Neutral color dominance
 6. ✓ Subtle motion only
 7. ✓ Artwork-first philosophy
