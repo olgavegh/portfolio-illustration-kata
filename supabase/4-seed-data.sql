@@ -36,14 +36,15 @@ INSERT INTO pages (slug, title, content, published) VALUES
       "availability": "Open for commissions"
     },
     "hero": {
-      "name": "Kata",
-      "tagline": "I believe illustration is food for the soul."
+      "name": "Food for the soul.",
+      "tagline": "Illustrator & Visual Storyteller",
+      "video": "https://your-supabase-project.supabase.co/storage/v1/object/public/media/KataProfile.mp4",
+      "image": ""
     },
-    "content": {
-      "intro": "Working like a chef in a creative kitchen, I collaborate with clients to craft visuals that explore education, science, nature, well-being, and the human experience.",
-      "approach": "Together, we mix ideas, balance flavors, and create illustrations that truly connect—tailored to inspire and meaningful in ways that templates never could be.",
-      "closing": "Illustration is my way of speaking. Let's create something meaningful together."
-    },
+    "content": [
+      { "label": "About", "paragraphs": ["Working like a chef in a creative kitchen, I collaborate with clients to craft visuals that explore education, science, nature, well-being, and the human experience.", "Together, we mix ideas, balance flavors, and create illustrations that truly connect—tailored to inspire and meaningful in ways that templates never could be."] },
+      { "label": "Philosophy", "paragraphs": ["Illustration is my way of speaking. Lets create something meaningful together."] }
+    ],
     "details": [
       { "label": "Specialties", "value": "Education, Science, Nature, Well-being" },
       { "label": "Available", "value": "Commissions & Collaborations" }

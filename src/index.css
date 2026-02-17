@@ -84,6 +84,7 @@ body {
 .typo-body {
   font-size: 1rem; /* text-base */
   line-height: 1.625; /* leading-relaxed */
+  max-width: 70ch; /* ~80 characters per line for readability */
   color: var(--color-gray-600, #4b5563);
 }
 

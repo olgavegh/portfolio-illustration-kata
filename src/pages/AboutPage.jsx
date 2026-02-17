@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, Fragment } from 'react'
 import { getPageBySlug } from '../services/pages'
 
 function AboutPage() {
@@ -39,41 +39,50 @@ function AboutPage() {
   const { hero, content, details } = page.content
 
   return (
-    <div className="px-6 py-8 max-w-5xl mx-auto flex flex-col h-full">
+    <div className="px-6 py-8 mx-auto flex flex-col h-full">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {/* Left: text content */}
+
+        {/* Left: label-content sub-grid */}
         <div>
+          {/* Hero — spans full left column */}
           {hero && (
-            <div className="mb-8">
-              <h1 className="typo-hero mb-4">{hero.name}</h1>
-              <p className="typo-tagline">{hero.tagline}</p>
+            <div className="mb-12">
+              {hero.tagline && (
+                <p className="typo-label mb-2">{hero.tagline}</p>
+              )}
+              <h1 className="typo-hero">{hero.name}</h1>
             </div>
           )}
 
-          {content && (
-            <div className="typo-body mb-8">
-              {content.intro && <p>{content.intro}</p>}
-              {content.approach && <p>{content.approach}</p>}
-            </div>
-          )
-          }
-
-          {details && (
-            <div className="grid grid-cols-2 gap-6">
-              {details.map((item, index) => (
-                <div key={index}>
-                  <dt className="typo-label mb-1">{item.label}</dt>
-                  <dd className="typo-body">
-                    {item.link ? (
-                      <a href={item.link} className="hover:text-accent transition-colors">{item.value}</a>
-                    ) : (
-                      item.value
-                    )}
-                  </dd>
-                </div>
+          {/* Content rows: label | paragraphs */}
+          {content && content.length > 0 && (
+            <div className="grid grid-cols-[5rem_1fr] gap-4 mb-8">
+              {content.map((section, index) => (
+                <Fragment key={index}>
+                  <span className="typo-label pt-1">{section.label}</span>
+                  <div className="typo-body space-y-3">
+                    {section.paragraphs.map((text, i) => (
+                      <p key={i}>{text}</p>
+                    ))}
+                  </div>
+                </Fragment>
               ))}
             </div>
           )}
+
+          {/* Details rows: label | values */}
+          {details && details.map((item, index) => (
+            <div key={index} className="grid grid-cols-[5rem_1fr] gap-4 mb-4">
+              <span className="typo-label pt-1">{item.label}</span>
+              <span className="typo-body">
+                {item.link ? (
+                  <a href={item.link} className="hover:text-accent transition-colors">{item.value}</a>
+                ) : (
+                  item.value
+                )}
+              </span>
+            </div>
+          ))}
         </div>
 
         {/* Right: media */}
@@ -96,12 +105,8 @@ function AboutPage() {
           </div>
         )}
       </div>
-      {/* Closing — fills remaining space to footer */}
-      {content && content.closing && (
-        <div className="flex-1 flex items-center justify-center my-16 md:my-20">
-          <p className="typo-body-emphasis text-center">{content.closing}</p>
-        </div>
-      )}
+
+
     </div>
   )
 }
