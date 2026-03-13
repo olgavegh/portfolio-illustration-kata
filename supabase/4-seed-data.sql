@@ -17,7 +17,7 @@ INSERT INTO projects (slug, title, subtitle, description, cover_image, year, cat
   ('portrait-series', 'Portrait Series', 'Faces and stories', 'A collection of portraits exploring human emotion and expression.', 'https://picsum.photos/seed/cover3/800/600', 2024, 'human', true, 3);
 
 -- ARTWORKS
-INSERT INTO artworks (project_slug, title, image, description, year, category_slug, published, order_index) VALUES
+INSERT INTO artworks (project_slug, title, image, description, year, category_slug, landing, order_index) VALUES
   ('summer-fruits', 'Strawberries', 'https://picsum.photos/seed/art1/600/800', 'Fresh summer strawberries', 2024, 'food', true, 1),
   ('summer-fruits', 'Watermelon Slice', 'https://picsum.photos/seed/art2/800/600', 'A refreshing watermelon slice', 2024, 'food', true, 2),
   ('summer-fruits', 'Citrus Bowl', 'https://picsum.photos/seed/art3/600/600', 'Oranges and lemons in a ceramic bowl', 2024, 'food', true, 3),

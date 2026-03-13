@@ -1,6 +1,6 @@
 function ArtworkCard({ artwork, onClick, showSubtitle = true }) {
-  // Subtitle priority: project_slug > year > nothing
-  const subtitle = artwork.project_slug || artwork.year || null
+  // Subtitle priority: project_slug > nothing
+  const subtitle = artwork.project_slug || null
 
   return (
     <div

@@ -18,9 +18,9 @@ CREATE POLICY "categories_public_read" ON categories
 CREATE POLICY "projects_public_read" ON projects
   FOR SELECT TO anon USING (published = true);
 
--- ARTWORKS: Public can read only published
+-- ARTWORKS: Public can read all (landing column filters homepage display in JS, not at DB level)
 CREATE POLICY "artworks_public_read" ON artworks
-  FOR SELECT TO anon USING (published = true);
+  FOR SELECT TO anon USING (true);
 
 -- PAGES: Public can read only published
 CREATE POLICY "pages_public_read" ON pages

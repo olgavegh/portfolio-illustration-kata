@@ -52,9 +52,6 @@ function ProjectPage() {
           {project.subtitle && (
             <p className="typo-tagline mt-1">{project.subtitle}</p>
           )}
-          {project.year && (
-            <p className="typo-caption mt-2">{project.year}</p>
-          )}
         </div>
         {/* Right: Description */}
         {project.description && (

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import ViewProjectButton from './buttons/ViewProjectButton'
 
 function ArtworkCardOverlay({ artwork, containerSize, showSubtitle = true }) {
-  const subtitle = artwork.project_slug || artwork.year || null
+  const subtitle = artwork.project_slug || null
   const [imageSize, setImageSize] = useState({ width: 0, height: 0 })
 
   const subtitleHeight = 40 // h-10 = 2.5rem = 40px

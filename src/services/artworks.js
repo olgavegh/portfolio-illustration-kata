@@ -1,11 +1,11 @@
 import { supabase } from "./supabase";
 
-// Get all published artworks (for homepage masonry)
+// Get artworks marked for homepage masonry (landing = true)
 export async function getArtworks() {
   const { data, error } = await supabase
     .from("artworks")
     .select("*")
-    .eq("published", true)
+    .eq("landing", true)
     .order("order_index");
 
   if (error) throw error;
@@ -17,7 +17,7 @@ export async function getArtworksByCategory(categorySlug) {
   const { data, error } = await supabase
     .from("artworks")
     .select("*")
-    .eq("published", true)
+    .eq("landing", true)
     .eq("category_slug", categorySlug)
     .order("order_index");
 
@@ -25,7 +25,7 @@ export async function getArtworksByCategory(categorySlug) {
   return data;
 }
 
-// Get all artworks for a specific project (even if unpublished)
+// Get all artworks for a specific project
 export async function getArtworksByProject(projectSlug) {
   const { data, error } = await supabase
     .from("artworks")
