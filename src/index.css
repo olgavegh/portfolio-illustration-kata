@@ -1,12 +1,14 @@
 /* Google Fonts - must be first */
-@import url("https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700&family=Bricolage+Grotesque:wght@400;500;600;700&display=swap");
+
+@import url("https://fonts.cdnfonts.com/css/satoshi");
+@import url("https://fonts.googleapis.com/css2?family=Amarna:ital,wght@0,100..700;1,100..700&display=swap");
 
 @import "tailwindcss";
 
 /* Custom Theme */
 @theme {
-  --font-sans: "Bricolage Grotesque", sans-serif;
-  --font-serif: "Bitter", serif;
+  --font-header: "Amarna", sans-serif;
+  --font-body: "Satoshi", sans-serif;
 
   --color-accent: #7e85f2;
   --color-accent-light: #9ba1f5;
@@ -15,7 +17,7 @@
 
 /* Base styles */
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-header);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -27,7 +29,7 @@ body {
 /*  HERO — Large feature headings (About hero, landing)
     Bitter 4xl → 5xl, dark */
 .typo-hero {
-  font-family: var(--font-sans);
+  font-family: var(--font-header);
   font-size: 3rem; /* text-5xl */
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -43,7 +45,7 @@ body {
 /*  PAGE TITLE — Section/page headings (Home hero, Project title)
     Bitter 2xl → 3xl, dark */
 .typo-page-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   font-size: 1.5rem; /* text-2xl */
   line-height: 1.2;
   color: var(--color-gray-800, #1f2937);
@@ -56,7 +58,7 @@ body {
 
 /*  TAGLINE — Secondary serif line under hero */
 .typo-tagline {
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   font-size: 1.5rem; /* text-2xl */
   font-weight: 200;
   letter-spacing: -0.02em;
@@ -73,7 +75,7 @@ body {
 /*  SUBTITLE — Small serif (artwork titles, project subtitle)
     Bitter sm, dark */
 .typo-subtitle {
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   font-size: 0.875rem; /* text-sm */
   line-height: 1.4;
   color: var(--color-gray-800, #1f2937);

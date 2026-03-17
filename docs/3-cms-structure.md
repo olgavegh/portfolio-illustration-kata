@@ -43,12 +43,11 @@ Main exploration content — appears on homepage masonry.
 ```
 artworks
 ├─ id (uuid)
-├─ project_slug (text)
 ├─ title (text)
 ├─ image (text/url)
-├─ year (int)
-├─ category_slug (text)
-├─ published (boolean)
+├─ category_slug (text → categories.slug)
+├─ project_slug (text → projects.slug, nullable)
+├─ landing (boolean)
 ├─ order_index (int)
 └─ created_at (timestamp)
 ```
@@ -61,9 +60,11 @@ artworks
 
 **Key Rules:**
 
-- Only `published = true` artworks appear on site
-- Independent from project visibility
+- `landing = true` → appears on homepage masonry grid
+- `landing = false` → only visible inside its project page
+- `project_slug = null` → standalone artwork (no project link)
 - `order_index` controls masonry position
+- All artworks are publicly readable (RLS open); `landing` is a JS display filter, not a security gate
 
 ---
 
@@ -206,18 +207,17 @@ projects
 categories
 ```
 
-**Why Simple String Relations?**
+**Why Slug-Based Relations?**
 
-- ✅ No foreign keys
-- ✅ No complex joins
-- ✅ React-friendly queries
-- ✅ Framer-friendly
-- ✅ Supabase-simple
+- ✅ FK constraints enforce integrity at DB level (`ON DELETE SET NULL`)
+- ✅ Simple queries, no joins needed in React
+- ✅ Supabase-friendly
+- ✅ Human-readable IDs in URLs and queries
 
 **Example Query:**
 
 ```javascript
-artworks.filter((a) => a.project_slug === project.slug);
+supabase.from('artworks').select('*').eq('project_slug', project.slug)
 ```
 
 ---
@@ -374,7 +374,7 @@ This matches how illustrators think and how galleries work.
 
 | Table          | Public (Read)           | Admin (Write)  |
 | -------------- | ----------------------- | -------------- |
-| **artworks**   | `published = true` only | ✅ Full access |
+| **artworks**   | ✅ Read all (JS filters `landing` for homepage) | ✅ Full access |
 | **projects**   | `published = true` only | ✅ Full access |
 | **categories** | ✅ Read all             | ✅ Full access |
 | **pages**      | `published = true` only | ✅ Full access |
