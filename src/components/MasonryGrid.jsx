@@ -6,7 +6,7 @@ function MasonryGrid({ children }) {
   }
 
   return (
-    <div className="columns-1 md:columns-3 lg:columns-4 xl:columns-5 gap-4">
+    <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xxl:columns-5 gap-4">
       {children}
     </div>
   )
