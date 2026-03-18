@@ -1,32 +1,34 @@
 import { useState, useEffect } from 'react'
 import { getArtworks, getArtworksByCategory } from '../services/artworks'
 import { getCategories } from '../services/categories'
+import { getPageBySlug } from '../services/pages'
 import MasonryGrid from '../components/MasonryGrid'
 import ArtworkCard from '../components/ArtworkCard'
+import SnippetCard from '../components/SnippetCard'
 import CategoryFilter from '../components/CategoryFilter'
 import ArtworkOverlay from '../components/ArtworkOverlay'
 
 function HomePage() {
+  const [pageContent, setPageContent] = useState({})
   const [artworks, setArtworks] = useState([])
   const [categories, setCategories] = useState([])
   const [activeCategory, setActiveCategory] = useState(null)
   const [loading, setLoading] = useState(true)
   const [selectedArtwork, setSelectedArtwork] = useState(null)
 
-  // Fetch categories on mount
   useEffect(() => {
-    async function fetchCategories() {
+    async function fetchInitial() {
       try {
-        const data = await getCategories()
-        setCategories(data)
+        const [pageData, cats] = await Promise.all([getPageBySlug('home'), getCategories()])
+        setPageContent(pageData.content ?? {})
+        setCategories(cats)
       } catch (error) {
-        console.error('Error fetching categories:', error)
+        console.error('Error fetching initial data:', error)
       }
     }
-    fetchCategories()
+    fetchInitial()
   }, [])
 
-  // Fetch artworks when category changes
   useEffect(() => {
     async function fetchArtworks() {
       setLoading(true)
@@ -44,44 +46,44 @@ function HomePage() {
     fetchArtworks()
   }, [activeCategory])
 
-  const handleArtworkClick = (artwork) => {
-    setSelectedArtwork(artwork)
-  }
-
-  const handleCloseOverlay = () => {
-    setSelectedArtwork(null)
-  }
-
-  const handleNavigate = (artwork) => {
-    setSelectedArtwork(artwork)
-  }
+  // Merge artworks + snippets, sorted by order_index
+  // Snippets hidden when a category filter is active
+  const snippets = !activeCategory && pageContent.snippets ? pageContent.snippets : []
+  const gridItems = [
+    ...artworks.map(a => ({ ...a, _type: 'artwork' })),
+    ...snippets.map(s => ({ ...s, _type: 'snippet' })),
+  ].sort((a, b) => a.order_index - b.order_index)
 
   return (
     <div className="px-6 py-8">
-      {/* Hero section */}
-      <div className="mb-20 max-w-2xl">
-        <h1 className="typo-page-title mb-3">
-          Narrative imagery that sparks connection.<br />
-          I'm Kata, an illustrator crafting visual solutions through collaboration.
-        </h1>
-      </div>
+
+      {pageContent.hero?.headline && (
+        <div className="mb-20 max-w-2xl">
+          <h1 className="typo-page-title">{pageContent.hero.headline}</h1>
+        </div>
+      )}
 
       <CategoryFilter
         categories={categories}
         activeCategory={activeCategory}
         onCategoryChange={setActiveCategory}
       />
+
       {loading ? (
         <p className="text-gray-500 text-center py-12">Loading...</p>
       ) : (
         <MasonryGrid>
-          {artworks.map((artwork) => (
-            <ArtworkCard
-              key={artwork.id}
-              artwork={artwork}
-              onClick={() => handleArtworkClick(artwork)}
-            />
-          ))}
+          {gridItems.map((item) =>
+            item._type === 'snippet' ? (
+              <SnippetCard key={item.id} snippet={item} />
+            ) : (
+              <ArtworkCard
+                key={item.id}
+                artwork={item}
+                onClick={() => setSelectedArtwork(item)}
+              />
+            )
+          )}
         </MasonryGrid>
       )}
 
@@ -89,10 +91,11 @@ function HomePage() {
         <ArtworkOverlay
           artwork={selectedArtwork}
           artworks={artworks}
-          onClose={handleCloseOverlay}
-          onNavigate={handleNavigate}
+          onClose={() => setSelectedArtwork(null)}
+          onNavigate={setSelectedArtwork}
         />
       )}
+
     </div>
   )
 }

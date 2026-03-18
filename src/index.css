@@ -26,28 +26,14 @@ body {
    Typography System
    ============================================= */
 
-/*  HERO — Large feature headings (About hero, landing)
-    Bitter 4xl → 5xl, dark */
-.typo-hero {
-  font-family: var(--font-header);
-  font-size: 3rem; /* text-5xl */
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  color: var(--color-gray-800, #1f2937);
-}
-@media (min-width: 768px) {
-  .typo-hero {
-    font-size: 3.75rem; /* text-6xl */
-  }
-}
-
 /*  PAGE TITLE — Section/page headings (Home hero, Project title)
-    Bitter 2xl → 3xl, dark */
+    2xl → 3xl, dark */
 .typo-page-title {
-  font-family: var(--font-body);
+  font-family: var(--font-headline);
   font-size: 1.5rem; /* text-2xl */
+  font-weight: 700;
   line-height: 1.2;
+  letter-spacing: -0.05em;
   color: var(--color-gray-800, #1f2937);
 }
 @media (min-width: 768px) {
@@ -56,7 +42,7 @@ body {
   }
 }
 
-/*  TAGLINE — Secondary serif line under hero */
+/*  TAGLINE — Secondary serif line under page-title */
 .typo-tagline {
   font-family: var(--font-body);
   font-size: 1.5rem; /* text-2xl */
@@ -107,9 +93,10 @@ body {
 /*  LABEL — Uppercase metadata labels
     Sans xs, uppercase, tracked, light */
 .typo-label {
+  font-family: var(--font-body);
   font-size: 0.75rem; /* text-xs */
   text-transform: uppercase;
-  letter-spacing: 0.05em; /* tracking-wide */
+  letter-spacing: 0.1em; /* tracking-wide */
   color: var(--color-gray-400, #9ca3af);
 }
 

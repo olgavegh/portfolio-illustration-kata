@@ -29,6 +29,29 @@ INSERT INTO artworks (project_slug, title, image, description, year, category_sl
 
 -- PAGES
 INSERT INTO pages (slug, title, content, published) VALUES
+  ('home', 'Home', '{
+    "hero": {
+      "headline": "I''m Kata — a visual translator who turns ideas into editorial illustrations."
+    },
+    "snippets": [
+      {
+        "id": "s1",
+        "label": "contact",
+        "image": { "src": "", "alt": "" },
+        "body": "Open for commissions and collaborations. I''d love to hear about your project.",
+        "link": { "label": "Get in touch", "href": "mailto:hello@kata.hu" },
+        "order_index": 3
+      },
+      {
+        "id": "s2",
+        "label": "sparkles",
+        "image": { "src": "", "alt": "" },
+        "body": "Illustrator based in Budapest, crafting visuals for education, science, and the human experience.",
+        "link": { "label": "Read more", "href": "/about" },
+        "order_index": 9
+      },
+    ]
+  }', true),
   ('about', 'About', '{
     "meta": {
       "label": "Illustrator / Visual Storyteller",

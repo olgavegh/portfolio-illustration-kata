@@ -4,7 +4,7 @@ function ArtworkCard({ artwork, onClick, showSubtitle = true }) {
 
   return (
     <div
-      className="mb-4 break-inside-avoid cursor-pointer group"
+      className="break-inside-avoid cursor-pointer group"
       onClick={onClick}
     >
       <img

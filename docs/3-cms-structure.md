@@ -144,8 +144,8 @@ pages
 
 **Example Slugs:**
 
-- `home`
-- `about`
+- `home` — headline + intro text above masonry grid
+- `about` — bio, philosophy, details
 
 **Note:** Contact information lives in footer (via `settings` table), not as a separate page.
 
