@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { getArtworks, getArtworksByCategory } from '../services/artworks'
+import { useSearchParams } from 'react-router-dom'
+import { getArtworks, getArtworksByCategory, getProjectCovers, getProjectCoversByCategory } from '../services/artworks'
 import { getCategories } from '../services/categories'
 import { getPageBySlug } from '../services/pages'
 import MasonryGrid from '../components/MasonryGrid'
@@ -12,10 +13,24 @@ function HomePage() {
   const [pageContent, setPageContent] = useState({})
   const [artworks, setArtworks] = useState([])
   const [categories, setCategories] = useState([])
-  const [activeCategory, setActiveCategory] = useState(null)
   const [loading, setLoading] = useState(true)
   const [selectedArtwork, setSelectedArtwork] = useState(null)
+  const [searchParams, setSearchParams] = useSearchParams()
 
+  const scale = searchParams.get('scale') ?? 'all'
+  const category = searchParams.get('category') ?? null
+
+
+  const setFilter = (key, value) => {
+    setSearchParams(prev => {
+      const next = new URLSearchParams(prev)
+      if (value && value !== 'all') next.set(key, value)
+      else next.delete(key)
+      return next
+    })
+  }
+
+  // general homepage functions
   useEffect(() => {
     async function fetchInitial() {
       try {
@@ -29,13 +44,21 @@ function HomePage() {
     fetchInitial()
   }, [])
 
+  // filtering masonry grid
   useEffect(() => {
     async function fetchArtworks() {
       setLoading(true)
       try {
-        const data = activeCategory
-          ? await getArtworksByCategory(activeCategory)
-          : await getArtworks()
+        let data = []
+        if (scale === 'project') {
+          data = category
+            ? await getProjectCoversByCategory(category)
+            : await getProjectCovers()
+        } else {
+          data = category
+            ? await getArtworksByCategory(category)
+            : await getArtworks()
+        }
         setArtworks(data)
       } catch (error) {
         console.error('Error fetching artworks:', error)
@@ -44,11 +67,11 @@ function HomePage() {
       }
     }
     fetchArtworks()
-  }, [activeCategory])
+  }, [scale, category])
 
   // Merge artworks + snippets, sorted by order_index
   // Snippets hidden when a category filter is active
-  const snippets = !activeCategory && pageContent.snippets ? pageContent.snippets : []
+  const snippets = (scale === 'all' && !category) && pageContent.snippets ? pageContent.snippets : []
   const gridItems = [
     ...artworks.map(a => ({ ...a, _type: 'artwork' })),
     ...snippets.map(s => ({ ...s, _type: 'snippet' })),
@@ -65,9 +88,11 @@ function HomePage() {
 
       <CategoryFilter
         categories={categories}
-        activeCategory={activeCategory}
-        onCategoryChange={setActiveCategory}
+        scale={scale}
+        activeCategory={category}
+        onFilterChange={setFilter}
       />
+
 
       {loading ? (
         <p className="text-gray-500 text-center py-12">Loading...</p>

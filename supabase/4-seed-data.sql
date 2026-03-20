@@ -4,11 +4,13 @@
 -- =============================================
 
 -- CATEGORIES
-INSERT INTO categories (slug, title, order_index) VALUES
-  ('human', 'Human', 1),
-  ('food', 'Food', 2),
-  ('nature', 'Nature', 3),
-  ('map', 'Map', 4);
+INSERT INTO categories (slug, title, type, icon, order_index) VALUES
+  ('all',     'All',      'scale',    'https://your-supabase-project.supabase.co/storage/v1/object/public/icons/scale-all.svg',     1),
+  ('project', 'Featured', 'scale',    'https://your-supabase-project.supabase.co/storage/v1/object/public/icons/scale-project.svg', 2),
+  ('human',  'Human',    'thematic', NULL, 1),
+  ('food',   'Food',     'thematic', NULL, 2),
+  ('nature', 'Nature',   'thematic', NULL, 3),
+  ('map',    'Map',      'thematic', NULL, 4);
 
 -- PROJECTS
 INSERT INTO projects (slug, title, subtitle, description, cover_image, year, category_slug, published, order_index) VALUES

@@ -10,6 +10,8 @@ CREATE TABLE categories (
   id          UUID    DEFAULT gen_random_uuid() PRIMARY KEY,
   slug        TEXT    UNIQUE NOT NULL,
   title       TEXT    NOT NULL,
+  type        TEXT    NOT NULL DEFAULT 'thematic', -- 'thematic' | 'scale'
+  icon        TEXT,                                -- custom icon URL (Supabase Storage), scale filters only
   order_index INTEGER DEFAULT 0
 );
 
