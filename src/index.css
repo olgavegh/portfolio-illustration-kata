@@ -13,6 +13,7 @@
   --font-body: "Geist", sans-serif;
 
   --color-background: hsla(168, 40%, 12%, 0.1);
+  --color-splash: hsl(168, 10%, 91%); /* opaque equivalent of background, for splash screen */
   --color-brand: hsla(168, 73%, 12%, 1);
 
   /* Accent */
@@ -38,6 +39,10 @@
 }
 
 /* Base styles */
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   background-color: var(--color-background);
   font-family: var(--font-header);
