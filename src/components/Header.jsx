@@ -20,8 +20,11 @@ function Header() {
 
   return (
     <header className="px-6 py-4 grid grid-cols-3 items-center">
-      <Link to="/" className="font-serif text-xl">
-        Kataco
+      <Link to="/">
+        {settings.logo_url
+          ? <img src={settings.logo_url} alt={settings.site_title ?? 'Logo'} className="h-13 w-auto" />
+          : <span className="font-serif text-xl">{settings.site_title ?? 'Kataco'}</span>
+        }
       </Link>
       <nav className="text-center">
         <Link to="/about" className="typo-ui hover:text-accent transition-colors">
