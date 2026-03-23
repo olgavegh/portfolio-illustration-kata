@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import { getArtworks, getArtworksByCategory, getProjectCovers, getProjectCoversByCategory } from '../services/artworks'
 import { getCategories } from '../services/categories'
 import { getPageBySlug } from '../services/pages'
@@ -10,11 +10,11 @@ import CategoryFilter from '../components/CategoryFilter'
 import ArtworkOverlay from '../components/ArtworkOverlay'
 
 function HomePage() {
+  const navigate = useNavigate()
   const [pageContent, setPageContent] = useState({})
   const [artworks, setArtworks] = useState([])
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(true)
-  const [selectedArtwork, setSelectedArtwork] = useState(null)
   const [searchParams, setSearchParams] = useSearchParams()
 
   const scale = searchParams.get('scale') ?? 'all'
@@ -105,21 +105,22 @@ function HomePage() {
               <ArtworkCard
                 key={item.id}
                 artwork={item}
-                onClick={() => setSelectedArtwork(item)}
+                onClick={() => navigate(`/project/${item.project_slug}`)}
+                showSubtitle={scale === 'project'}
               />
             )
           )}
         </MasonryGrid>
       )}
 
-      {selectedArtwork && (
+      {/* {selectedArtwork && (
         <ArtworkOverlay
           artwork={selectedArtwork}
           artworks={artworks}
           onClose={() => setSelectedArtwork(null)}
           onNavigate={setSelectedArtwork}
         />
-      )}
+      )} */}
 
     </div>
   )
