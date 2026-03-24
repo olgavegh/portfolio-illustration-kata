@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getSettings } from '../services/settings'
+import ThemeToggle from "./ThemeToggle"
 
 function Footer() {
   const [settings, setSettings] = useState({})
@@ -70,6 +71,7 @@ function Footer() {
       <p className="typo-caption text-gray-300">
         {new Date().getFullYear()} Kataco
       </p>
+      <ThemeToggle />
     </footer>
   )
 }

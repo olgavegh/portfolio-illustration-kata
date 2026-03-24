@@ -16,8 +16,49 @@
   --color-splash: hsl(168, 10%, 91%); /* opaque equivalent of background, for splash screen */
   --color-brand: hsla(168, 73%, 12%, 1);
 
+  /* ── Primitives ── */
+  /* Lilac scale */
+  --color-lilac-50:  #fdfdff;
+  --color-lilac-100: #f7f7fe;
+  --color-lilac-200: #edeefd;
+  --color-lilac-300: #dfe0fc;
+  --color-lilac-400: #cccffa;
+  --color-lilac-500: #b6baf8;
+  --color-lilac-600: #9ca1f5;
+  --color-lilac-700: #7d85f2;
+  --color-lilac-800: #111cae;
+  --color-lilac-900: #080c4e;
+  --color-lilac-950: #05072e;
+
+  /* Forest scale */
+  --color-forest-50:  #f9fefd;
+  --color-forest-100: #e7fbf7;
+  --color-forest-200: #c8f6ed;
+  --color-forest-300: #9ef0df;
+  --color-forest-400: #67e7ce;
+  --color-forest-500: #25ddb8;
+  --color-forest-600: #169078;
+  --color-forest-700: #08352c;
+  --color-forest-800: #041814;
+  --color-forest-900: #010605;
+  --color-forest-950: #000000;
+
+  /* Lime scale */
+  --color-lime-50:  #fefffd;
+  --color-lime-100: #fafef6;
+  --color-lime-200: #f4fdea;
+  --color-lime-300: #ebfbd9;
+  --color-lime-400: #e0f8c4;
+  --color-lime-500: #d2f6aa;
+  --color-lime-600: #c2f28b;
+  --color-lime-700: #afee68;
+  --color-lime-800: #5fa212;
+  --color-lime-900: #2c4b08;
+  --color-lime-950: #1b2e05;
+
+  /* ── Semantic ── */
   /* Accent */
-  --color-accent: #7e85f2;
+  --color-accent: var(--color-lilac-700);
   --color-accent-light: #9ba1f5;
   --color-accent-dark: #6169e8;
 
@@ -37,6 +78,7 @@
   --color-surface-raised: hsla(168, 40%, 12%, 0.05); /* cards, filter buttons */
   --color-border: #e5e7eb;
 }
+
 
 /* Base styles */
 html {
