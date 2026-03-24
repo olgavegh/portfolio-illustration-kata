@@ -46,18 +46,18 @@ function ProjectPage() {
   }, [slug])
 
   if (loading) {
-    return <div className="px-6 py-8"><p className="text-gray-400">Loading...</p></div>
+    return <div className="px-lg py-xl"><p className="text-text-muted">Loading...</p></div>
   }
 
   if (!project) {
-    return <div className="px-6 py-8"><p className="text-gray-400">Project not found</p></div>
+    return <div className="px-lg py-xl"><p className="text-text-muted">Project not found</p></div>
   }
 
   return (
     <div>
 
       {/* Split hero — image left, info right, fills ~88vh so masonry peeks below */}
-      <div className="grid grid-cols-1 min-[960px]:grid-cols-2 gap-10 min-[960px]:gap-12 px-6 py-8 min-h-[88vh] items-stretch">
+      <div className="grid grid-cols-1 min-[960px]:grid-cols-2 gap-10 min-[960px]:gap-2xl px-lg py-xl min-h-[88vh] items-stretch">
 
         {project.cover_image && (
           <div className="aspect-square overflow-hidden md:m-15">
@@ -69,7 +69,7 @@ function ProjectPage() {
           </div>
         )}
 
-        <div className="flex flex-col justify-center gap-4">
+        <div className="flex flex-col justify-center gap-md">
           <h1 className="typo-page-title">{project.title}</h1>
           {project.subtitle && (
             <p className="typo-tagline">{project.subtitle}</p>
@@ -81,7 +81,7 @@ function ProjectPage() {
       </div>
 
       {/* Full-width masonry grid */}
-      <div className="px-6 pb-8">
+      <div className="px-lg pb-xl">
         {artworks.length > 0 && (
           <MasonryGrid>
             {artworks.map((artwork) => (
@@ -97,11 +97,11 @@ function ProjectPage() {
       </div>
 
       {/* Bottom project navigation */}
-      <div className="px-6 py-24 grid grid-cols-3 items-center text-gray-400">
+      <div className="px-lg py-24 grid grid-cols-3 items-center text-text-muted">
 
         <div>
           {prevProject && (
-            <Link to={`/project/${prevProject.slug}`} className="flex flex-col gap-1 hover:text-accent transition-colors">
+            <Link to={`/project/${prevProject.slug}`} className="flex flex-col gap-xs hover:text-accent transition-colors">
               <span className="typo-label">← Previous</span>
               <span className="typo-ui">{prevProject.title}</span>
             </Link>
@@ -109,14 +109,14 @@ function ProjectPage() {
         </div>
 
         {/* Dot indicators — one per project, current filled */}
-        <div className="flex items-center justify-center gap-2">
+        <div className="flex items-center justify-center gap-sm">
           {projectsIndex.map((p) => (
             <Link
               key={p.slug}
               to={`/project/${p.slug}`}
               className={`rounded-full transition-all ${p.slug === slug
-                ? 'w-2 h-2 bg-gray-800'
-                : 'w-1.5 h-1.5 bg-gray-300 hover:bg-gray-500'
+                ? 'w-2 h-2 bg-text-primary'
+                : 'w-1.5 h-1.5 bg-border hover:bg-text-muted'
                 }`}
             />
           ))}
@@ -124,7 +124,7 @@ function ProjectPage() {
 
         <div className="text-right">
           {nextProject && (
-            <Link to={`/project/${nextProject.slug}`} className="flex flex-col gap-1 items-end hover:text-accent transition-colors">
+            <Link to={`/project/${nextProject.slug}`} className="flex flex-col gap-xs items-end hover:text-accent transition-colors">
               <span className="typo-label">Next →</span>
               <span className="typo-ui">{nextProject.title}</span>
             </Link>

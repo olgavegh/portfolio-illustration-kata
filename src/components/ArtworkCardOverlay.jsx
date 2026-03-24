@@ -64,7 +64,7 @@ function ArtworkCardOverlay({ artwork, containerSize, showSubtitle = true }) {
       </div>
       {/* Subtitle and View Project */}
       {showSubtitle && (
-        <div className="shrink-0 mt-2 flex justify-between items-end">
+        <div className="shrink-0 mt-sm flex justify-between items-end">
           <div>
             {artwork.title && (
               <p className="typo-subtitle">{artwork.title}</p>

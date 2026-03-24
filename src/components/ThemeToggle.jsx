@@ -14,7 +14,7 @@ function ThemeToggle() {
   }
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-sm">
       {THEMES.map(theme => (
         <button
           key={theme}

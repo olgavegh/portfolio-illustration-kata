@@ -78,10 +78,10 @@ function HomePage() {
   ].sort((a, b) => a.order_index - b.order_index)
 
   return (
-    <div className="px-6 py-8">
+    <div className="px-lg py-xl">
 
       {pageContent.hero?.headline && (
-        <div className="mb-20 max-w-2xl">
+        <div className="mb-20 max-w-[50ch]">
           <h1 className="typo-page-title">{pageContent.hero.headline}</h1>
         </div>
       )}
@@ -95,7 +95,7 @@ function HomePage() {
 
 
       {loading ? (
-        <p className="text-gray-500 text-center py-12">Loading...</p>
+        <p className="text-text-muted text-center py-2xl">Loading...</p>
       ) : (
         <MasonryGrid>
           {gridItems.map((item) =>

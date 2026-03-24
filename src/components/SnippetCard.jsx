@@ -8,8 +8,8 @@ function SnippetCard({ snippet }) {
   const wrapperProps = !link ? {} : isExternal ? { href: link.href } : { to: link.href }
 
   return (
-    <Wrapper {...wrapperProps} className="block h-full py-6">
-      <div className="flex flex-col gap-4">
+    <Wrapper {...wrapperProps} className="block h-full py-lg">
+      <div className="flex flex-col gap-md">
         <p className="typo-label">{label}</p>
         <div className={`flex flex-row ${image?.src ? 'gap-3' : ''}`}>
           {image?.src && (

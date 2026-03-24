@@ -12,13 +12,18 @@
   --font-header: "Unbounded", sans-serif;
   --font-body: "Geist", sans-serif;
 
-  --color-background: hsla(168, 40%, 12%, 0.1);
-  --color-splash: hsl(168, 10%, 91%); /* opaque equivalent of background, for splash screen */
-  --color-brand: hsla(168, 73%, 12%, 1);
+  /* ── Spacing (8pt scale) ── */
+  --spacing-xs:  0.25rem;  /*  4px */
+  --spacing-sm:  0.5rem;   /*  8px */
+  --spacing-md:  1rem;     /* 16px */
+  --spacing-lg:  1.5rem;   /* 24px */
+  --spacing-xl:  2rem;     /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  --spacing-3xl: 4rem;     /* 64px */
 
   /* ── Primitives ── */
   /* Lilac scale */
-  --color-lilac-50:  #fdfdff;
+  --color-lilac-50: #fdfdff;
   --color-lilac-100: #f7f7fe;
   --color-lilac-200: #edeefd;
   --color-lilac-300: #dfe0fc;
@@ -31,7 +36,7 @@
   --color-lilac-950: #05072e;
 
   /* Forest scale */
-  --color-forest-50:  #f9fefd;
+  --color-forest-50: #f9fefd;
   --color-forest-100: #e7fbf7;
   --color-forest-200: #c8f6ed;
   --color-forest-300: #9ef0df;
@@ -43,8 +48,21 @@
   --color-forest-900: #010605;
   --color-forest-950: #000000;
 
+  /* Grey scale */
+  --color-grey-50: #fafafa;
+  --color-grey-100: #f4f4f5;
+  --color-grey-200: #e4e4e7;
+  --color-grey-300: #d1d1d6;
+  --color-grey-400: #a1a1aa;
+  --color-grey-500: #71717a;
+  --color-grey-600: #52525b;
+  --color-grey-700: #3f3f46;
+  --color-grey-800: #27272a;
+  --color-grey-900: #18181b;
+  --color-grey-950: #09090b;
+
   /* Lime scale */
-  --color-lime-50:  #fefffd;
+  --color-lime-50: #fefffd;
   --color-lime-100: #fafef6;
   --color-lime-200: #f4fdea;
   --color-lime-300: #ebfbd9;
@@ -57,28 +75,37 @@
   --color-lime-950: #1b2e05;
 
   /* ── Semantic ── */
-  /* Accent */
-  --color-accent: var(--color-lilac-700);
-  --color-accent-light: #9ba1f5;
-  --color-accent-dark: #6169e8;
 
-  /* Text — semantic roles */
-  --color-text-primary: hsla(168, 40%, 12%, 0.9); /* headings, titles */
-  --color-text-secondary: hsla(168, 40%, 12%, 0.6); /* body paragraphs */
-  --color-text-muted: hsla(168, 40%, 12%, 0.45); /* taglines, supporting text */
-  --color-text-subtle: hsla(
-    168,
-    40%,
-    12%,
-    0.43
-  ); /* labels, captions, metadata */
-
-  /* Surface */
-  --color-surface: #ffffff;
-  --color-surface-raised: hsla(168, 40%, 12%, 0.05); /* cards, filter buttons */
-  --color-border: #e5e7eb;
+  /* Editorial — lilac + neutral */
+  --color-background: var(--color-grey-50); /*page background*/
+  --color-surface: transparent; /*card / elevated bg */
+  --color-border: var(--color-grey-100); /*dividers*/
+  --color-accent: var(--color-lilac-700); /*interactive, highlights*/
+  --color-text-primary: var(--color-lilac-950); /*headings, titles*/
+  --color-text-secondary: var(--color-lilac-900); /*body paragraphs*/
+  --color-text-muted: color-mix(
+    in srgb,
+    var(--color-lilac-900) 30%,
+    var(--color-grey-500)
+  ); /*labels, captions, metadata*/
+  --color-surface-raised: var(--color-grey-100);   /* elevated surfaces, cards */
+  --color-button-secondary: var(--color-grey-100); /* secondary button bg */
+  --color-overlay: oklch(0% 0 0 / 50%);            /* backdrop overlay */
 }
 
+/* Nature — forest greens */
+[data-theme="nature"] {
+  --color-accent: var(--color-forest-500);
+  --color-background: var(--color-forest-50);
+  --color-text-primary: var(--color-forest-700);
+}
+
+/* Dreamy — soft lilac */
+[data-theme="dreamy"] {
+  --color-accent: var(--color-lilac-500);
+  --color-background: var(--color-lilac-50);
+  --color-text-primary: var(--color-lilac-900);
+}
 
 /* Base styles */
 html {

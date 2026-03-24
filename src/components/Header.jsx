@@ -19,7 +19,7 @@ function Header() {
   }, [])
 
   return (
-    <header className="px-6 py-4 grid grid-cols-3 items-center">
+    <header className="px-lg py-md grid grid-cols-3 items-center">
       <Link to="/">
         {settings.logo_url
           ? <img src={settings.logo_url} alt={settings.site_title ?? 'Logo'} className="h-13 w-auto" />
@@ -31,7 +31,7 @@ function Header() {
           About
         </Link>
       </nav>
-      <div className="flex items-center justify-end gap-3 text-gray-500">
+      <div className="flex items-center justify-end gap-3 text-text-muted">
         {settings.instagram_url && (
           <a href={settings.instagram_url} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors" title="Instagram">
             <LuInstagram size={20} />

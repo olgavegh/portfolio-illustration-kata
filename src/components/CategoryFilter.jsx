@@ -9,11 +9,11 @@ function CategoryFilter({ categories, scale, activeCategory, onFilterChange }) {
   const btn = (isActive) =>
     `px-3 py-1 typo-ui rounded-full transition-colors ${isActive
       ? 'bg-accent text-white'
-      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+      : 'bg-button-secondary text-text-secondary hover:bg-surface-raised'
     }`
 
   return (
-    <div className="flex flex-row gap-3 mb-8">
+    <div className="flex flex-row gap-3 mb-xl">
 
       {/* Scale row */}
       <Switch
@@ -24,7 +24,7 @@ function CategoryFilter({ categories, scale, activeCategory, onFilterChange }) {
       />
 
       {/* Thematic row */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-sm">
         <button
           onClick={() => onFilterChange('category', null)}
           className={btn(activeCategory === null)}

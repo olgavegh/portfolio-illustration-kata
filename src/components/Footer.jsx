@@ -24,26 +24,26 @@ function Footer() {
   if (loading) return null
 
   return (
-    <footer className="px-6 py-12 border-t border-gray-100">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+    <footer className="px-lg py-2xl border-t border-border">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-xl mb-xl">
         {/* Explore */}
         <div>
           <p className="typo-label mb-3">Explore</p>
-          <nav className="flex flex-col gap-2">
-            <Link to="/" className="typo-ui text-gray-500 hover:text-accent transition-colors">Work</Link>
-            <Link to="/about" className="typo-ui text-gray-500 hover:text-accent transition-colors">About</Link>
+          <nav className="flex flex-col gap-sm">
+            <Link to="/" className="typo-ui text-text-muted hover:text-accent transition-colors">Work</Link>
+            <Link to="/about" className="typo-ui text-text-muted hover:text-accent transition-colors">About</Link>
           </nav>
         </div>
 
         {/* Follow */}
         <div>
           <p className="typo-label mb-3">Follow</p>
-          <nav className="flex flex-col gap-2">
+          <nav className="flex flex-col gap-sm">
             {settings.instagram_url && (
-              <a href={settings.instagram_url} target="_blank" rel="noopener noreferrer" className="typo-ui text-gray-500 hover:text-accent transition-colors">Instagram</a>
+              <a href={settings.instagram_url} target="_blank" rel="noopener noreferrer" className="typo-ui text-text-muted hover:text-accent transition-colors">Instagram</a>
             )}
             {settings.behance_url && (
-              <a href={settings.behance_url} target="_blank" rel="noopener noreferrer" className="typo-ui text-gray-500 hover:text-accent transition-colors">Behance</a>
+              <a href={settings.behance_url} target="_blank" rel="noopener noreferrer" className="typo-ui text-text-muted hover:text-accent transition-colors">Behance</a>
             )}
           </nav>
         </div>
@@ -51,9 +51,9 @@ function Footer() {
         {/* Contact */}
         <div>
           <p className="typo-label mb-3">Contact</p>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-sm">
             {settings.contact_email && (
-              <a href={`mailto:${settings.contact_email}`} className="typo-ui text-gray-500 hover:text-accent transition-colors">{settings.contact_email}</a>
+              <a href={`mailto:${settings.contact_email}`} className="typo-ui text-text-muted hover:text-accent transition-colors">{settings.contact_email}</a>
             )}
           </div>
         </div>
@@ -62,7 +62,7 @@ function Footer() {
         {settings.location && (
           <div>
             <p className="typo-label mb-3">Based in</p>
-            <p className="typo-ui text-gray-500">{settings.location}</p>
+            <p className="typo-ui text-text-muted">{settings.location}</p>
           </div>
         )}
       </div>
