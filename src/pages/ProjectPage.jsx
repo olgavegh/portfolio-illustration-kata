@@ -57,7 +57,7 @@ function ProjectPage() {
     <div>
 
       {/* Split hero — image left, info right, fills ~88vh so masonry peeks below */}
-      <div className="grid grid-cols-1 min-[960px]:grid-cols-2 gap-10 min-[960px]:gap-2xl px-lg py-xl min-h-[88vh] items-stretch">
+      <div className="grid grid-cols-1 min-[960px]:grid-cols-2 gap-10 min-[960px]:gap-2xl py-xl min-h-[88vh] items-stretch">
 
         {project.cover_image && (
           <div className="aspect-square overflow-hidden md:m-15">
@@ -81,7 +81,7 @@ function ProjectPage() {
       </div>
 
       {/* Full-width masonry grid */}
-      <div className="px-lg pb-xl">
+      <div className="pb-xl">
         {artworks.length > 0 && (
           <MasonryGrid>
             {artworks.map((artwork) => (
@@ -97,7 +97,7 @@ function ProjectPage() {
       </div>
 
       {/* Bottom project navigation */}
-      <div className="px-lg py-24 grid grid-cols-3 items-center text-text-muted">
+      <div className="py-24 grid grid-cols-3 items-center text-text-muted">
 
         <div>
           {prevProject && (

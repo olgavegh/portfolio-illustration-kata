@@ -89,6 +89,7 @@
   --color-surface: transparent; /*card / elevated bg */
   --color-border: var(--color-grey-100); /*dividers*/
   --color-accent: var(--color-lilac-700); /*interactive, highlights*/
+  --color-logo: var(--color-lilac-900);
   --color-text-primary: var(--color-lilac-950); /*headings, titles*/
   --color-text-secondary: var(--color-lilac-900); /*body paragraphs*/
   --color-text-muted: color-mix(
@@ -124,7 +125,8 @@
 [data-theme="nature"] {
   --font-header: var(--font-nature-header);
   --font-body: var(--font-nature-body);
-  --color-accent: var(--color-forest-500);
+  --color-accent: var(--color-forest-700);
+  --color-logo: var(--color-lilac-900);
   --color-background: var(--color-forest-50);
   --color-text-primary: var(--color-forest-700);
 }
@@ -134,6 +136,7 @@
   --font-header: var(--font-dreamy-header);
   --font-body: var(--font-dreamy-body);
   --color-accent: var(--color-lilac-500);
+  --color-logo: var(--color-lilac-900);
   --color-background: var(--color-lilac-50);
   --color-text-primary: var(--color-lilac-900);
 }

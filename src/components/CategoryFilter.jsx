@@ -29,7 +29,7 @@ function CategoryFilter({ categories, scale, activeCategory, onFilterChange }) {
           onClick={() => onFilterChange('category', null)}
           className={btn(activeCategory === null)}
         >
-          All
+          {/* All */}
         </button>
         {thematicFilters.map((c) => (
           <button

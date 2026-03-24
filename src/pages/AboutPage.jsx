@@ -39,7 +39,7 @@ function AboutPage() {
   const { hero, content, details } = page.content
 
   return (
-    <div className="px-lg py-xl mx-auto flex flex-col h-full">
+    <div className="px-lg mx-auto flex flex-col h-full">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2xl">
 
         {/* Left: label-content sub-grid */}

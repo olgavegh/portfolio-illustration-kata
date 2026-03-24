@@ -78,10 +78,10 @@ function HomePage() {
   ].sort((a, b) => a.order_index - b.order_index)
 
   return (
-    <div className="px-lg py-xl">
+    <div className="">
 
       {pageContent.hero?.headline && (
-        <div className="mb-20">
+        <div className="pt-xl md:pt-2xl pb-2xl md:pb-3xl">
           <h1 className="typo-display md:max-w-1/2">{pageContent.hero.headline}</h1>
         </div>
       )}
