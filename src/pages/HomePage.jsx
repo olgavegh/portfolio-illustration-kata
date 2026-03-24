@@ -81,8 +81,8 @@ function HomePage() {
     <div className="px-lg py-xl">
 
       {pageContent.hero?.headline && (
-        <div className="mb-20 max-w-[50ch]">
-          <h1 className="typo-page-title">{pageContent.hero.headline}</h1>
+        <div className="mb-20">
+          <h1 className="typo-display md:max-w-1/2">{pageContent.hero.headline}</h1>
         </div>
       )}
 

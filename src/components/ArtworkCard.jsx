@@ -16,7 +16,7 @@ function ArtworkCard({ artwork, onClick, showSubtitle = true }) {
       {showSubtitle && (artwork.title || subtitle) && (
         <div className="mt-sm">
           {artwork.title && (
-            <p className="typo-subtitle">{artwork.title}</p>
+            <p className="typo-eyebrow">{artwork.title}</p>
           )}
           {subtitle && (
             <p className="typo-caption">{subtitle}</p>

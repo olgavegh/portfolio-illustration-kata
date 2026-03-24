@@ -50,7 +50,7 @@ function AboutPage() {
               {hero.tagline && (
                 <p className="typo-label mb-sm">{hero.tagline}</p>
               )}
-              <h1 className="typo-page-title">{hero.name}</h1>
+              <h1 className="typo-title">{hero.name}</h1>
             </div>
           )}
 

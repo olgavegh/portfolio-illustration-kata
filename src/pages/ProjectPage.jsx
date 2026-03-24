@@ -70,9 +70,9 @@ function ProjectPage() {
         )}
 
         <div className="flex flex-col justify-center gap-md">
-          <h1 className="typo-page-title">{project.title}</h1>
+          <h1 className="typo-title">{project.title}</h1>
           {project.subtitle && (
-            <p className="typo-tagline">{project.subtitle}</p>
+            <p className="typo-subtitle">{project.subtitle}</p>
           )}
           {project.description && (
             <p className="typo-body">{project.description}</p>
