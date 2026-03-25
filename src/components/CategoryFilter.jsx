@@ -13,14 +13,13 @@ function CategoryFilter({ categories, scale, activeCategory, onFilterChange }) {
     }`
 
   return (
-    <div className="flex flex-row gap-3 mb-xl">
+    <div className="flex flex-row justify-between gap-3 mb-xl">
 
       {/* Scale row */}
       <Switch
         isOn={scale === 'project'}
         handleToggle={() => onFilterChange('scale', scale === 'project' ? 'all' : 'project')}
-        iconOff={scaleFilters[0]?.icon}
-        iconOn={scaleFilters[1]?.icon}
+        label={scale === 'project' ? scaleFilters[1]?.title : scaleFilters[0]?.title}
       />
 
       {/* Thematic row */}
@@ -29,7 +28,7 @@ function CategoryFilter({ categories, scale, activeCategory, onFilterChange }) {
           onClick={() => onFilterChange('category', null)}
           className={btn(activeCategory === null)}
         >
-          {/* All */}
+          All
         </button>
         {thematicFilters.map((c) => (
           <button

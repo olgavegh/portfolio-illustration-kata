@@ -1,25 +1,25 @@
-import SvgIcon from './SvgIcon'
-import './Switch.css'
-
-const Switch = ({ isOn, handleToggle, iconOff, iconOn }) => {
+const Switch = ({ isOn, handleToggle, label }) => {
     return (
-        <>
-            <input
-                checked={isOn}
-                onChange={handleToggle}
-                className="react-switch-checkbox -ml-2" // for unneccesery gap
-                id="react-switch-new"
-                type="checkbox"
-            />
-            <label
-                htmlFor="react-switch-new"
-                className={`react-switch-label relative flex items-center justify-between cursor-pointer rounded-full transition duration-500 ${isOn ? 'bg-accent' : 'bg-button-secondary'}`}
-            >
-                {iconOff && <SvgIcon src={iconOff} className={`relative z-10 p-1.5 w-10 h-10 text-white transition duration-500 ${isOn ? "opacity-0" : "opacity-100"}`} />}
-                {iconOn && <SvgIcon src={iconOn} className={`relative z-10 p-1.5 w-10 h-10 text-white transition duration-500 ${!isOn ? "opacity-0" : "opacity-100"}`} />}
-                <span className="react-switch-button absolute aspect-square rounded-full bg-white shadow-sm transition" />
-            </label>
-        </>
+
+        <button
+            role="switch"
+            aria-checked={isOn}
+            onClick={handleToggle}
+            className="flex items-center gap-sm cursor-pointer group text-[2rem]"
+        >
+            {/* Track — height = thumb, width = 2× thumb */}
+            <span className={`relative inline-block h-[1em] w-[2em] shrink-0 rounded-full transition-colors duration-300 ${isOn ? 'bg-accent' : 'bg-surface border border-border'}`}>
+                {/* Thumb — positioned with inset, same gap on both sides */}
+                <span style={{ top: 'var(--switch-gutter)', bottom: 'var(--switch-gutter)', ...(isOn ? { right: 'var(--switch-gutter)' } : { left: 'var(--switch-gutter)' }) }} className="absolute aspect-square rounded-full shadow-sm transition-all duration-300 bg-background" />
+            </span>
+
+            {/* Label */}
+            {label && (
+                <span className={`typo-ui transition-colors ${isOn ? 'text-text-secondary' : 'text-text-muted'}`}>
+                    {label}
+                </span>
+            )}
+        </button>
     )
 }
 

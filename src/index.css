@@ -20,6 +20,9 @@
   /* --font-dreamy-header: "Unbounded", sans-serif;
   --font-dreamy-body:   "Geist", sans-serif; */
 
+  /* ── Component tokens ── */
+  --switch-gutter: 3px;
+
   /* ── Spacing (8pt scale) ── */
   --spacing-xs: 0.25rem; /*  4px */
   --spacing-sm: 0.5rem; /*  8px */
@@ -86,7 +89,7 @@
 
   /* Editorial — lilac + neutral */
   --color-background: var(--color-grey-50); /*page background*/
-  --color-surface: transparent; /*card / elevated bg */
+  --color-surface: var(--color-grey-200); /*card / elevated bg */
   --color-border: var(--color-grey-100); /*dividers*/
   --color-accent: var(--color-lilac-700); /*interactive, highlights*/
   --color-logo: var(--color-lilac-900);
