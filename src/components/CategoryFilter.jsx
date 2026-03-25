@@ -7,9 +7,9 @@ function CategoryFilter({ categories, scale, activeCategory, onFilterChange }) {
   const thematicFilters = categories.filter(c => c.type === 'thematic')
 
   const btn = (isActive) =>
-    `px-3 py-1 typo-ui rounded-full transition-colors ${isActive
+    `px-md py-xs typo-ui rounded-lg transition-colors duration-300 ${isActive
       ? 'bg-accent text-white'
-      : 'bg-button-secondary text-text-secondary hover:bg-surface-raised'
+      : 'bg-button-secondary text-text-primary hover:bg-surface-raised'
     }`
 
   return (

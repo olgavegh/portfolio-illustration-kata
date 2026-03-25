@@ -20,8 +20,15 @@
   /* --font-dreamy-header: "Unbounded", sans-serif;
   --font-dreamy-body:   "Geist", sans-serif; */
 
+  /* ── Radius ── */
+  --radius-sm: 4px; /* tags, badges, small inputs */
+  --radius-md: 8px; /* buttons, filter pills */
+  --radius-lg: 12px; /* cards, panels */
+  --radius-full: 9999px; /* switch, avatars, pills */
+
   /* ── Component tokens ── */
   --switch-gutter: 3px;
+  --switch-radius: var(--radius-full);
 
   /* ── Spacing (8pt scale) ── */
   --spacing-xs: 0.25rem; /*  4px */
@@ -101,7 +108,7 @@
     var(--color-grey-500)
   ); /*labels, captions, metadata*/
   --color-surface-raised: var(--color-grey-100); /* elevated surfaces, cards */
-  --color-button-secondary: var(--color-grey-100); /* secondary button bg */
+  --color-button-secondary: transparent; /* secondary button bg */
   --color-overlay: oklch(0% 0 0 / 50%); /* backdrop overlay */
 
   /* ── Semantic font roles (default: editorial) ── */
@@ -124,7 +131,7 @@
    Theme System
    ============================================= */
 
-/* Nature — forest greens */
+/* Nature — forest greens · organic, rounded */
 [data-theme="nature"] {
   --font-header: var(--font-nature-header);
   --font-body: var(--font-nature-body);
@@ -132,12 +139,18 @@
   --color-logo: var(--color-lilac-900);
   --color-background: var(--color-forest-50);
   --color-text-primary: var(--color-forest-700);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
 }
 
-/* Dreamy — soft lilac */
+/* Dreamy — soft lilac · very soft, pillowy */
 [data-theme="dreamy"] {
   --font-header: var(--font-dreamy-header);
   --font-body: var(--font-dreamy-body);
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
   --color-accent: var(--color-lilac-500);
   --color-logo: var(--color-lilac-900);
   --color-background: var(--color-lilac-50);
