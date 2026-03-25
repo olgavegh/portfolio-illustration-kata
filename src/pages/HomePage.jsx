@@ -14,7 +14,6 @@ function HomePage() {
   const [pageContent, setPageContent] = useState({})
   const [artworks, setArtworks] = useState([])
   const [categories, setCategories] = useState([])
-  const [loading, setLoading] = useState(true)
   const [searchParams, setSearchParams] = useSearchParams()
 
   const scale = searchParams.get('scale') ?? 'all'
@@ -47,7 +46,6 @@ function HomePage() {
   // filtering masonry grid
   useEffect(() => {
     async function fetchArtworks() {
-      setLoading(true)
       try {
         let data = []
         if (scale === 'project') {
@@ -62,8 +60,6 @@ function HomePage() {
         setArtworks(data)
       } catch (error) {
         console.error('Error fetching artworks:', error)
-      } finally {
-        setLoading(false)
       }
     }
     fetchArtworks()
@@ -94,24 +90,21 @@ function HomePage() {
       />
 
 
-      {loading ? (
-        <p className="text-text-muted text-center py-2xl">Loading...</p>
-      ) : (
-        <MasonryGrid>
-          {gridItems.map((item) =>
-            item._type === 'snippet' ? (
-              <SnippetCard key={item.id} snippet={item} />
-            ) : (
-              <ArtworkCard
-                key={item.id}
-                artwork={item}
-                onClick={() => navigate(`/project/${item.project_slug}`)}
-                showSubtitle={scale === 'project'}
-              />
-            )
-          )}
-        </MasonryGrid>
-      )}
+      <MasonryGrid>
+        {gridItems.map((item, index) =>
+          item._type === 'snippet' ? (
+            <SnippetCard key={item.id} snippet={item} />
+          ) : (
+            <ArtworkCard
+              key={item.id}
+              artwork={item}
+              index={index}
+              onClick={() => navigate(`/project/${item.project_slug}`)}
+              showSubtitle={scale === 'project'}
+            />
+          )
+        )}
+      </MasonryGrid>
 
       {/* {selectedArtwork && (
         <ArtworkOverlay

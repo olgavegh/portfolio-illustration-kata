@@ -1,16 +1,28 @@
-function ArtworkCard({ artwork, onClick, showSubtitle = true }) {
+import { useState, useEffect, useRef } from "react"
+
+function ArtworkCard({ artwork, onClick, showSubtitle = true, index = 0 }) {
   // Subtitle priority: project_slug > nothing
   const subtitle = artwork.project_slug || null
+  const [loaded, setLoaded] = useState(false)
+  const imgRef = useRef(null)
+
+  // after mount, check if already complete
+  useEffect(() => {
+    if (imgRef.current?.complete) setLoaded(true)
+  }, [])
 
   return (
     <div
-      className="break-inside-avoid cursor-pointer group"
+      style={{ transitionDelay: `${Math.min(index, 8) * 80}ms` }}
+      className={`break-inside-avoid cursor-pointer group transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
       onClick={onClick}
     >
       <img
+        ref={imgRef}
         src={artwork.image}
         alt={artwork.title}
-        className="w-full rounded-sm transition-opacity duration-300 group-hover:opacity-90"
+        className="w-full rounded-sm group-hover:opacity-90"
+        onLoad={() => setLoaded(true)}
         loading="lazy"
       />
       {showSubtitle && (artwork.title || subtitle) && (
@@ -25,6 +37,8 @@ function ArtworkCard({ artwork, onClick, showSubtitle = true }) {
       )}
     </div>
   )
+
+
 }
 
 export default ArtworkCard
