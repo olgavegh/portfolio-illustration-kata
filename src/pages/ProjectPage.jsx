@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { getProjectBySlug, getPrevProject, getNextProject, getProjectsIndex } from '../services/projects'
+import { getProjectBySlug, getPrevProject, getNextProject } from '../services/projects'
 import { getArtworksByProject } from '../services/artworks'
 import MasonryGrid from '../components/MasonryGrid'
 import ArtworkCard from '../components/ArtworkCard'
@@ -12,7 +12,6 @@ function ProjectPage() {
   const [artworks, setArtworks] = useState([])
   const [prevProject, setPrevProject] = useState(null)
   const [nextProject, setNextProject] = useState(null)
-  const [projectsIndex, setProjectsIndex] = useState([])
   const [loading, setLoading] = useState(true)
   const [selectedArtwork, setSelectedArtwork] = useState(null)
 
@@ -20,14 +19,12 @@ function ProjectPage() {
 
     async function fetchData() {
       try {
-        const [projectData, artworksData, indexData] = await Promise.all([
+        const [projectData, artworksData] = await Promise.all([
           getProjectBySlug(slug),
           getArtworksByProject(slug),
-          getProjectsIndex()
         ])
         setProject(projectData)
         setArtworks(artworksData)
-        setProjectsIndex(indexData)
 
         const [prev, next] = await Promise.all([
           getPrevProject(projectData.order_index),
@@ -57,9 +54,9 @@ function ProjectPage() {
     <div>
 
       {/* Split hero — image left, info right, fills ~88vh so masonry peeks below */}
-      <div className="grid grid-cols-1 min-[960px]:grid-cols-2 gap-10 min-[960px]:gap-2xl py-xl min-h-[88vh] items-stretch">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-sm py-xl min-h-[50vh] my-lg items-stretch">
 
-        {project.cover_image && (
+        {/* {project.cover_image && (
           <div className="aspect-square overflow-hidden md:m-15">
             <img
               src={project.cover_image}
@@ -67,15 +64,17 @@ function ProjectPage() {
               className="w-full h-full object-cover"
             />
           </div>
-        )}
+        )} */}
 
-        <div className="flex flex-col justify-center gap-md">
-          <h1 className="typo-title">{project.title}</h1>
-          {project.subtitle && (
-            <p className="typo-subtitle">{project.subtitle}</p>
-          )}
+        <div className="col-span-1 sm:col-span-2 sm:col-start-2 lg:col-start-3 flex flex-col justify-center gap-md">
+          <div>
+            <h1 className="typo-title">{project.title}</h1>
+            {project.subtitle && (
+              <p className="typo-subtitle">{project.subtitle}</p>
+            )}
+          </div>
           {project.description && (
-            <p className="typo-body">{project.description}</p>
+            <p className="typo-body text-balance">{project.description}</p>
           )}
         </div>
       </div>
@@ -97,36 +96,24 @@ function ProjectPage() {
       </div>
 
       {/* Bottom project navigation */}
-      <div className="py-24 grid grid-cols-3 items-center text-text-muted">
+      <div className="sticky bottom-0 py-md px-md md:px-lg -mx-md md:-mx-lg grid grid-cols-3 items-center text-text-muted bg-surface-raised">
 
         <div>
           {prevProject && (
             <Link to={`/project/${prevProject.slug}`} className="flex flex-col gap-xs hover:text-accent transition-colors">
               <span className="typo-label">← Previous</span>
-              <span className="typo-ui">{prevProject.title}</span>
+              <span className="typo-caption hidden sm:inline">{prevProject.title}</span>
             </Link>
           )}
         </div>
 
-        {/* Dot indicators — one per project, current filled */}
-        <div className="flex items-center justify-center gap-sm">
-          {projectsIndex.map((p) => (
-            <Link
-              key={p.slug}
-              to={`/project/${p.slug}`}
-              className={`rounded-full transition-all ${p.slug === slug
-                ? 'w-2 h-2 bg-text-primary'
-                : 'w-1.5 h-1.5 bg-border hover:bg-text-muted'
-                }`}
-            />
-          ))}
-        </div>
+        <div />
 
         <div className="text-right">
           {nextProject && (
             <Link to={`/project/${nextProject.slug}`} className="flex flex-col gap-xs items-end hover:text-accent transition-colors">
               <span className="typo-label">Next →</span>
-              <span className="typo-ui">{nextProject.title}</span>
+              <span className="typo-caption hidden sm:inline">{nextProject.title}</span>
             </Link>
           )}
         </div>
