@@ -17,14 +17,16 @@ function ArtworkCard({ artwork, onClick, showSubtitle = true, index = 0 }) {
       className={`break-inside-avoid cursor-pointer group transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
       onClick={onClick}
     >
-      <img
-        ref={imgRef}
-        src={artwork.image}
-        alt={artwork.title}
-        className="w-full rounded-sm group-hover:opacity-90"
-        onLoad={() => setLoaded(true)}
-        loading="lazy"
-      />
+      <div className="overflow-hidden rounded-sm">
+        <img
+          ref={imgRef}
+          src={artwork.image}
+          alt={artwork.title}
+          className="w-full transition-transform duration-500 group-hover:scale-102"
+          onLoad={() => setLoaded(true)}
+          loading="lazy"
+        />
+      </div>
       {showSubtitle && (artwork.title || subtitle) && (
         <div className="mt-sm">
           {artwork.title && (
