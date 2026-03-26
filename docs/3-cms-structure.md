@@ -164,7 +164,20 @@ pages
   "gallery": [
     { "type": "image", "src": "string", "alt": "string" },
     { "type": "video", "src": "string", "poster": "string — optional thumbnail" }
-  ]
+  ],
+  "services": {
+    "label": "string",
+    "title": "string",
+    "desc": "string — intro paragraph",
+    "cards": [
+      {
+        "icon": "string — URL or empty",
+        "title": "string",
+        "desc": "string — short tagline",
+        "details": "string — comma/slash separated list"
+      }
+    ]
+  }
 }
 ```
 

@@ -84,7 +84,32 @@ INSERT INTO pages (slug, title, content, published) VALUES
       { "type": "image", "src": "", "alt": "" },
       { "type": "video", "src": "", "poster": "" },
       { "type": "image", "src": "", "alt": "" }
-    ]
+    ],
+    "services": {
+      "label": "Services",
+      "title": "",
+      "desc": "I am particularly drawn to projects involving nature, lifestyle, science, and gastronomy—or better yet, a mixture of all four.",
+      "cards": [
+        {
+          "icon": "",
+          "title": "Illustration",
+          "desc": "Thought-to-Form. Translating the invisible into the visible.",
+          "details": "editorial illustration / book cover / infographic / cover art / storytelling"
+        },
+        {
+          "icon": "",
+          "title": "Graphic Design",
+          "desc": "Brand Nesting. Building a cohesive visual home for your message.",
+          "details": "brand identity & logo design / layout & editorial design / social media visuals / packaging / presentation design"
+        },
+        {
+          "icon": "",
+          "title": "Walk & Talk",
+          "desc": "Getting out of the nest to brainstorm in the wild.",
+          "details": "strategic birdwatching / field notes"
+        }
+      ]
+    }
   }', true);
 
 -- SETTINGS

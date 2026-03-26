@@ -56,12 +56,12 @@ function AboutPage() {
   if (loading) return <div className="py-xl"><p className="text-text-muted">Loading...</p></div>
   if (!page) return <div className="py-xl"><p className="text-text-muted">Page not found</p></div>
 
-  const { hero, textcontent = [], gallery = [] } = page.content
+  const { hero, textcontent = [], gallery = [], services } = page.content
   const aboutSection = textcontent.find(s => s.label === 'About')
   const journeySection = textcontent.find(s => s.label === 'Journey')
 
   return (
-    <div className="flex flex-col gap-3xl py-xl">
+    <div className="flex flex-col gap-2xl py-xl">
 
       {/* ── Hero ── */}
       <section className={GRID}>
@@ -125,18 +125,41 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* ── Services (placeholder — schema pending) ── */}
-      <section className={GRID}>
-        <div className="col-span-4 md:col-span-6 lg:col-span-9 mb-sm">
-          <span className="typo-label">Services</span>
-        </div>
-        {['Editorial Illustration', 'Book & Cover Design', 'Educational Illustration'].map((name, i) => (
-          <div key={i} className="col-span-2 md:col-span-2 lg:col-span-3 bg-surface p-md flex flex-col gap-sm rounded-sm">
-            <p className="typo-eyebrow">{name}</p>
-            <p className="typo-body text-text-muted">Placeholder — content coming from CMS.</p>
+      {/* ── Services ── */}
+      {services && (
+        <section >
+          <div className={GRID}>
+            <div className="col-span-4 sm:col-span-1 mb-sm">
+              <span className="typo-label">{services.label}</span>
+            </div>
+            <div className="col-span-4 flex flex-col gap-md">
+              {services.desc && <p className="typo-body">{services.desc}</p>}
+            </div>
           </div>
-        ))}
-      </section>
+          <div className={GRID}>
+            {services.cards?.map((card, i) => (
+              <div key={i} className="col-span-2 md:col-span-2 lg:col-span-3 bg-surface-raised p-xl flex flex-col gap-md rounded-sm my-2xl">
+                {card.icon && (
+                  <span style={{
+                    display: 'inline-block',
+                    width: '1.5rem',
+                    height: '1.5rem',
+                    backgroundColor: 'var(--color-accent)',
+                    maskImage: `url(${card.icon})`,
+                    WebkitMaskImage: `url(${card.icon})`,
+                    maskSize: 'contain',
+                    maskRepeat: 'no-repeat',
+                    maskPosition: 'center',
+                  }} />
+                )}
+                <p className="typo-title">{card.title}</p>
+                <p className="typo-body">{card.desc}</p>
+                {card.details && <p className="typo-eyebrow text-text-muted">{card.details}</p>}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ── Journey ── */}
       {journeySection && (
