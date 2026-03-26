@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { getPageBySlug } from '../services/pages'
 import EmblaCarousel from '../components/EmblaCarousel'
 
-// Single grid — 4 / 6 / 9 cols across all breakpoints
-const GRID = 'grid grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-3'
+// Editorial grid — 1 / 4 / 6 cols across all breakpoints
+const GRID = 'layout-grid'
 const OPTIONS = { dragFree: true, loop: true }
 
 // Grid: gap = 0.75rem (gap-3), padding: 1rem mobile / 1.5rem md+
@@ -65,7 +65,7 @@ function AboutPage() {
 
       {/* ── Hero ── */}
       <section className={GRID}>
-        <div className="col-span-4 lg:col-span-6 col-start-1 flex flex-col gap-sm">
+        <div className="col-span-1 md:col-span-3 lg:col-span-4 flex flex-col gap-sm">
           {hero?.tagline && <p className="typo-label">{hero.tagline}</p>}
           {hero?.title && <h1 className="typo-display">{hero.title}</h1>}
         </div>
@@ -74,10 +74,10 @@ function AboutPage() {
       {/* ── About ── */}
       {aboutSection && (
         <section className={GRID}>
-          <div className="col-span-4 sm:col-span-1">
+          <div className="col-span-1">
             <span className="typo-label">{aboutSection.label}</span>
           </div>
-          <div className="col-span-4 flex flex-col gap-md">
+          <div className="col-span-1 md:col-span-3 lg:col-span-5 flex flex-col gap-md">
             {aboutSection.paragraphs.map((text, i) => (
               <p key={i} className="typo-body">{text}</p>
             ))}
@@ -87,7 +87,7 @@ function AboutPage() {
 
       {/* ── Gallery ── */}
       <section className={GRID}>
-        <div className="col-span-4 sm:col-span-1">
+        <div className="col-span-1">
           <svg
             viewBox="0 0 60 52"
             fill="none"
@@ -120,7 +120,7 @@ function AboutPage() {
             </g>
           </svg>
         </div>
-        <div className="col-span-4 md:col-span-5 lg:col-span-8">
+        <div className="col-span-1 md:col-span-3 lg:col-span-5">
           <EmblaCarousel slides={gallery.length > 0 ? gallery : PLACEHOLDER_SLIDES} options={OPTIONS} slideSize={slideSize} slideHeight='40svh' />
         </div>
       </section>
@@ -129,16 +129,16 @@ function AboutPage() {
       {services && (
         <section >
           <div className={GRID}>
-            <div className="col-span-4 sm:col-span-1 mb-sm">
+            <div className="col-span-1 mb-sm">
               <span className="typo-label">{services.label}</span>
             </div>
-            <div className="col-span-4 flex flex-col gap-md">
+            <div className="col-span-1 md:col-span-3 lg:col-span-5 flex flex-col gap-md">
               {services.desc && <p className="typo-body">{services.desc}</p>}
             </div>
           </div>
-          <div className={GRID}>
+          <div className={`${GRID} my-2xl`}>
             {services.cards?.map((card, i) => (
-              <div key={i} className="col-span-2 md:col-span-2 lg:col-span-3 bg-surface-raised p-xl flex flex-col gap-md rounded-sm my-2xl">
+              <div key={i} className="col-span-1 md:col-span-2 bg-surface-raised p-xl flex flex-col gap-md rounded-sm">
                 {card.icon && (
                   <span style={{
                     display: 'inline-block',
@@ -164,11 +164,11 @@ function AboutPage() {
       {/* ── Journey ── */}
       {journeySection && (
         <section className={GRID}>
-          <div className="col-span-1 md:col-span-1 lg:col-span-2 flex flex-col gap-xs">
+          <div className="col-span-1 flex flex-col gap-xs">
             <span className="typo-label">{journeySection.label}</span>
             {journeySection.title && <p className="typo-subtitle">{journeySection.title}</p>}
           </div>
-          <div className="col-span-3 md:col-span-5 lg:col-span-7 flex flex-col gap-md">
+          <div className="col-span-1 md:col-span-3 lg:col-span-5 flex flex-col gap-md">
             {journeySection.paragraphs.map((text, i) => (
               <p key={i} className="typo-body">{text}</p>
             ))}

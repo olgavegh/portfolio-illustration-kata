@@ -53,20 +53,10 @@ function ProjectPage() {
   return (
     <div>
 
-      {/* Split hero — image left, info right, fills ~88vh so masonry peeks below */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-sm py-xl min-h-[50vh] my-lg items-stretch">
+      {/* Split hero — info right-aligned */}
+      <div className="layout-grid py-xl min-h-[50vh] my-lg items-center">
 
-        {/* {project.cover_image && (
-          <div className="aspect-square overflow-hidden md:m-15">
-            <img
-              src={project.cover_image}
-              alt={project.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        )} */}
-
-        <div className="col-span-1 sm:col-span-2 sm:col-start-2 lg:col-start-3 flex flex-col justify-center gap-md">
+        <div className="col-span-1 md:col-span-3 md:col-start-2 lg:col-span-4 lg:col-start-3 flex flex-col justify-center gap-md">
           <div>
             <h1 className="typo-title">{project.title}</h1>
             {project.subtitle && (
@@ -96,7 +86,7 @@ function ProjectPage() {
       </div>
 
       {/* Bottom project navigation */}
-      <div className="sticky bottom-0 py-md px-md md:px-lg -mx-md md:-mx-lg grid grid-cols-3 items-center text-text-muted bg-surface-raised">
+      <div className="sticky bottom-0 py-md px-md md:px-2xl -mx-md md:-mx-2xl grid grid-cols-3 items-center text-text-muted bg-surface-raised">
 
         <div>
           {prevProject && (

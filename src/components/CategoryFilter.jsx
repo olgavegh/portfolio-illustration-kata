@@ -7,13 +7,13 @@ function CategoryFilter({ categories, scale, activeCategory, onFilterChange }) {
   const thematicFilters = categories.filter(c => c.type === 'thematic')
 
   const btn = (isActive) =>
-    `px-md py-xs typo-ui rounded-lg transition-colors duration-300 ${isActive
+    `px-sm py-xs typo-ui rounded-lg transition-colors duration-300 ${isActive
       ? 'bg-accent text-white'
       : 'bg-button-secondary text-text-primary hover:bg-surface-raised'
     }`
 
   return (
-    <div className="flex flex-row justify-between gap-3 mb-xl">
+    <div className="flex flex-row justify-between gap-sm mb-sm">
 
       {/* Scale row */}
       <Switch

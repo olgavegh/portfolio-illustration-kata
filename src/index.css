@@ -263,3 +263,21 @@ body {
     transform: rotate(20deg);
   }
 }
+
+/* =============================================
+   Editorial Grid
+   ============================================= */
+
+@utility layout-grid {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}

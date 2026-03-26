@@ -7,9 +7,9 @@ function MainLayout({ children }) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="w-full max-w-400 mx-auto flex flex-col flex-1">
+      <div className="w-full max-w-[87.5rem] mx-auto flex flex-col flex-1">
         <Header onHeightChange={setHeaderHeight} />
-        <main className="flex-1 px-md md:px-lg" style={{ paddingTop: headerHeight, '--header-h': `${headerHeight}px` }}>
+        <main className="flex-1 px-md md:px-2xl" style={{ paddingTop: headerHeight, '--header-h': `${headerHeight}px` }}>
           {children}
         </main>
         <Footer />
