@@ -1,10 +1,14 @@
-import { useState, useEffect, useRef, Fragment } from 'react'
+import { useState, useEffect } from 'react'
 import { getPageBySlug } from '../services/pages'
+
+// Primary grid — 2/3/4 cols
+const GRID = 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3'
+// Three-card grid — services exception
+const GRID_3 = 'grid grid-cols-2 md:grid-cols-6 lg:grid-cols-9 gap-3'
 
 function AboutPage() {
   const [page, setPage] = useState(null)
   const [loading, setLoading] = useState(true)
-  const videoRef = useRef(null)
 
   useEffect(() => {
     async function fetchPage() {
@@ -20,92 +24,83 @@ function AboutPage() {
     fetchPage()
   }, [])
 
-  const handleVideoPlay = () => {
-    videoRef.current?.play()
-  }
+  if (loading) return <div className="py-xl"><p className="text-text-muted">Loading...</p></div>
+  if (!page)   return <div className="py-xl"><p className="text-text-muted">Page not found</p></div>
 
-  const handleVideoPause = () => {
-    videoRef.current?.pause()
-  }
-
-  if (loading) {
-    return <div className="px-lg py-xl"><p className="text-text-muted">Loading...</p></div>
-  }
-
-  if (!page) {
-    return <div className="px-lg py-xl"><p className="text-text-muted">Page not found</p></div>
-  }
-
-  const { hero, content, details } = page.content
+  const { hero, textcontent = [], gallery = [] } = page.content
+  const aboutSection   = textcontent.find(s => s.label === 'About')
+  const journeySection = textcontent.find(s => s.label === 'Journey')
 
   return (
-    <div className="px-lg mx-auto flex flex-col h-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2xl">
+    <div className="flex flex-col gap-3xl py-xl">
 
-        {/* Left: label-content sub-grid */}
-        <div>
-          {/* Hero — spans full left column */}
-          {hero && (
-            <div className="mb-2xl">
-              {hero.tagline && (
-                <p className="typo-label mb-sm">{hero.tagline}</p>
-              )}
-              <h1 className="typo-title">{hero.name}</h1>
-            </div>
-          )}
-
-          {/* Content rows: label | paragraphs */}
-          {content && content.length > 0 && (
-            <div className="grid grid-cols-[5rem_1fr] gap-md mb-xl">
-              {content.map((section, index) => (
-                <Fragment key={index}>
-                  <span className="typo-label pt-xs">{section.label}</span>
-                  <div className="typo-body space-y-3">
-                    {section.paragraphs.map((text, i) => (
-                      <p key={i}>{text}</p>
-                    ))}
-                  </div>
-                </Fragment>
-              ))}
-            </div>
-          )}
-
-          {/* Details rows: label | values */}
-          {details && details.map((item, index) => (
-            <div key={index} className="grid grid-cols-[5rem_1fr] gap-md mb-md">
-              <span className="typo-label pt-xs">{item.label}</span>
-              <span className="typo-body">
-                {item.link ? (
-                  <a href={item.link} className="hover:text-accent transition-colors">{item.value}</a>
-                ) : (
-                  item.value
-                )}
-              </span>
-            </div>
-          ))}
+      {/* ── Hero ── */}
+      <section className={GRID}>
+        <div className="col-span-2 md:col-span-2 lg:col-span-3 lg:col-start-2 flex flex-col gap-sm">
+          {hero?.tagline && <p className="typo-label">{hero.tagline}</p>}
+          {hero?.title   && <h1 className="typo-display">{hero.title}</h1>}
         </div>
+      </section>
 
-        {/* Right: media */}
-        {hero?.video && (
-          <div
-            className="cursor-pointer"
-            onMouseEnter={handleVideoPlay}
-            onMouseLeave={handleVideoPause}
-            onTouchStart={handleVideoPlay}
-            onTouchEnd={handleVideoPause}
-          >
-            <video
-              ref={videoRef}
-              src={hero.video}
-              muted
-              loop
-              playsInline
-              className="w-full rounded-sm"
-            />
+      {/* ── About ── */}
+      {aboutSection && (
+        <section className={GRID}>
+          {/* Label col */}
+          <div className="col-span-2 md:col-span-1">
+            <span className="typo-label">{aboutSection.label}</span>
           </div>
-        )}
-      </div>
+          {/* Paragraphs */}
+          <div className="col-span-2 md:col-span-2 lg:col-span-3 flex flex-col gap-md">
+            {aboutSection.paragraphs.map((text, i) => (
+              <p key={i} className="typo-body">{text}</p>
+            ))}
+          </div>
+        </section>
+      )}
 
+      {/* ── Gallery ── */}
+      <section className={GRID}>
+        {(gallery.length > 0 ? gallery : [{}, {}, {}]).map((item, i) => (
+          <div key={i} className="col-span-1 aspect-square bg-surface rounded-sm overflow-hidden">
+            {item.src
+              ? <img src={item.src} alt={item.alt} className="w-full h-full object-cover" />
+              : <div className="w-full h-full flex items-center justify-center">
+                  <span className="typo-label">Image {i + 1}</span>
+                </div>
+            }
+          </div>
+        ))}
+      </section>
+
+      {/* ── Services (placeholder — schema pending) ── */}
+      <section className={GRID_3}>
+        <div className="col-span-2 md:col-span-6 lg:col-span-9 mb-sm">
+          <span className="typo-label">Services</span>
+        </div>
+        {['Editorial Illustration', 'Book & Cover Design', 'Educational Illustration'].map((name, i) => (
+          <div key={i} className="col-span-1 md:col-span-2 lg:col-span-3 bg-surface p-md flex flex-col gap-sm rounded-sm">
+            <p className="typo-eyebrow">{name}</p>
+            <p className="typo-body text-text-muted">Placeholder — content coming from CMS.</p>
+          </div>
+        ))}
+      </section>
+
+      {/* ── Journey ── */}
+      {journeySection && (
+        <section className={GRID}>
+          {/* Label + optional section title */}
+          <div className="col-span-2 md:col-span-1 flex flex-col gap-xs">
+            <span className="typo-label">{journeySection.label}</span>
+            {journeySection.title && <p className="typo-subtitle">{journeySection.title}</p>}
+          </div>
+          {/* Paragraphs */}
+          <div className="col-span-2 md:col-span-2 lg:col-span-3 flex flex-col gap-md">
+            {journeySection.paragraphs.map((text, i) => (
+              <p key={i} className="typo-body">{text}</p>
+            ))}
+          </div>
+        </section>
+      )}
 
     </div>
   )

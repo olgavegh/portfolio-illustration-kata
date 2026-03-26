@@ -145,7 +145,27 @@ pages
 **Example Slugs:**
 
 - `home` — headline + intro text above masonry grid
-- `about` — bio, philosophy, details
+- `about` — hero title/tagline, textcontent sections, gallery
+
+**`about` content shape:**
+```json
+{
+  "hero": {
+    "title": "string — main headline",
+    "tagline": "string — role/subtitle"
+  },
+  "textcontent": [
+    {
+      "label": "string — section label (e.g. About, Journey)",
+      "title": "string — optional section title",
+      "paragraphs": ["string"]
+    }
+  ],
+  "gallery": [
+    { "src": "string — image URL", "alt": "string" }
+  ]
+}
+```
 
 **Note:** Contact information lives in footer (via `settings` table), not as a separate page.
 
