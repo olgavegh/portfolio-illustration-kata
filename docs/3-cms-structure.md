@@ -162,7 +162,8 @@ pages
     }
   ],
   "gallery": [
-    { "src": "string — image URL", "alt": "string" }
+    { "type": "image", "src": "string", "alt": "string" },
+    { "type": "video", "src": "string", "poster": "string — optional thumbnail" }
   ]
 }
 ```

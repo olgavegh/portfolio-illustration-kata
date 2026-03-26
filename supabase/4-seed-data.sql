@@ -81,9 +81,9 @@ INSERT INTO pages (slug, title, content, published) VALUES
       }
     ],
     "gallery": [
-      { "src": "", "alt": "" },
-      { "src": "", "alt": "" },
-      { "src": "", "alt": "" }
+      { "type": "image", "src": "", "alt": "" },
+      { "type": "video", "src": "", "poster": "" },
+      { "type": "image", "src": "", "alt": "" }
     ]
   }', true);
 

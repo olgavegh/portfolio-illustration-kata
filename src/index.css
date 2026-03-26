@@ -97,6 +97,8 @@
   /* Editorial — lilac + neutral */
   --color-background: var(--color-grey-50); /*page background*/
   --color-surface: var(--color-grey-200); /*card / elevated bg */
+  --color-stroke-weak: var(--color-grey-200);
+  --color-stroke-strong: var(--color-grey-400);
   --color-border: var(--color-grey-100); /*dividers*/
   --color-accent: var(--color-lilac-700); /*interactive, highlights*/
   --color-logo: var(--color-lilac-900);
@@ -251,4 +253,14 @@ body {
   font-family: var(--font-body);
   font-size: var(--fs-ui);
   line-height: 1.4;
+}
+
+@keyframes wag {
+  0%,
+  100% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
 }
