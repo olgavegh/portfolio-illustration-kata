@@ -8,7 +8,7 @@ function MasonryGrid({ children }) {
   return (
     <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xxl:columns-5 gap-sm">
       {children.map((child, i) => (
-        <div key={i} className="mb-md break-inside-avoid">{child}</div>
+        <div key={i} className="mb-sm break-inside-avoid">{child}</div>
       ))
       }
     </div>

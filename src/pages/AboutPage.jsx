@@ -61,7 +61,7 @@ function AboutPage() {
   const journeySection = textcontent.find(s => s.label === 'Journey')
 
   return (
-    <div className="flex flex-col gap-2xl py-xl">
+    <div className="flex flex-col gap-3xl py-xl">
 
       {/* ── Hero ── */}
       <section className={GRID}>
@@ -152,9 +152,12 @@ function AboutPage() {
                     maskPosition: 'center',
                   }} />
                 )}
-                <p className="typo-title">{card.title}</p>
-                <p className="typo-body">{card.desc}</p>
-                {card.details && <p className="typo-eyebrow text-text-muted">{card.details}</p>}
+                <p className="typo-card-title">{card.title}</p>
+                <div>
+                  <p className="typo-body">{card.desc}</p>
+                  {card.details && <p className="typo-eyebrow mt-xs text-accent">{card.details}</p>}
+                </div>
+
               </div>
             ))}
           </div>

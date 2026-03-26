@@ -77,8 +77,8 @@ function HomePage() {
     <div className="">
 
       {pageContent.hero?.headline && (
-        <div className="pt-xl md:pt-2xl pb-2xl md:pb-2xl">
-          <h1 className="typo-display md:max-w-1/2">{pageContent.hero.headline}</h1>
+        <div className="pt-xl md:pt-2xl lg:pt-3xl pb-2xl md:pb-2xl lg:pb-3xl">
+          <h1 className="typo-display lg:max-w-2/3">{pageContent.hero.headline}</h1>
         </div>
       )}
 

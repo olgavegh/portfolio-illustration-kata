@@ -49,24 +49,24 @@ function Header({ onHeightChange }) {
         <Link to="/">
           {settings.logo_url
             ? <span
-                style={{
-                  backgroundColor: 'var(--color-logo)',
-                  maskImage: `url(${settings.logo_url})`,
-                  WebkitMaskImage: `url(${settings.logo_url})`,
-                  maskSize: 'contain',
-                  WebkitMaskSize: 'contain',
-                  maskRepeat: 'no-repeat',
-                  WebkitMaskRepeat: 'no-repeat',
-                }}
-                className="block w-auto h-8"
-                aria-label={settings.site_title ?? 'Logo'}
-              />
+              style={{
+                backgroundColor: 'var(--color-logo)',
+                maskImage: `url(${settings.logo_url})`,
+                WebkitMaskImage: `url(${settings.logo_url})`,
+                maskSize: 'contain',
+                WebkitMaskSize: 'contain',
+                maskRepeat: 'no-repeat',
+                WebkitMaskRepeat: 'no-repeat',
+              }}
+              className="block w-auto h-8"
+              aria-label={settings.site_title ?? 'Logo'}
+            />
             : <span className="typo-ui">{settings.site_title ?? 'Kataco'}</span>
           }
         </Link>
         <nav className="flex flex-row justify-center gap-md">
-          <Link to="/" className="typo-ui hover:text-accent transition-colors">Works</Link>
-          <Link to="/about" className="typo-ui hover:text-accent transition-colors">About</Link>
+          <Link to="/" className="typo-ui text-text-muted hover:text-accent active:text-accent transition-colors">Works</Link>
+          <Link to="/about" className="typo-ui text-text-muted hover:text-accent active:text-accent transition-colors">About</Link>
         </nav>
         <div className="flex items-center justify-end gap-3 text-text-muted">
           {settings.instagram_url && (

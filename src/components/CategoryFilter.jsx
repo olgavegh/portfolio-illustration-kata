@@ -8,7 +8,7 @@ function CategoryFilter({ categories, scale, activeCategory, onFilterChange }) {
 
   const btn = (isActive) =>
     `px-sm py-xs typo-ui rounded-lg transition-colors duration-300 ${isActive
-      ? 'bg-accent text-white'
+      ? 'bg-accent text-background'
       : 'bg-button-secondary text-text-primary hover:bg-surface-raised'
     }`
 

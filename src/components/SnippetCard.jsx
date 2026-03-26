@@ -15,7 +15,7 @@ function SnippetCard({ snippet }) {
           {image?.src && (
             <img src={image.src} alt={image.alt} className="max-w-1/4 aspect-square object-center object-cover rounded-xs" />
           )}
-          <h3 className="text-lg">{body}</h3>
+          <h3 className="typo-body">{body}</h3>
         </div>
         {link && <span className="typo-label text-accent">{link.label} →</span>}
       </div>

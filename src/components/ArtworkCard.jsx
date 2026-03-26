@@ -28,7 +28,7 @@ function ArtworkCard({ artwork, onClick, showSubtitle = true, index = 0 }) {
         />
       </div>
       {showSubtitle && (artwork.title || subtitle) && (
-        <div className="mt-sm">
+        <div className="mt-xs">
           {artwork.title && (
             <p className="typo-eyebrow">{artwork.title}</p>
           )}

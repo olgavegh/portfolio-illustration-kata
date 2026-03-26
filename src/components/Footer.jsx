@@ -24,7 +24,7 @@ function Footer() {
   if (loading) return null
 
   return (
-    <footer className="px-lg py-2xl border-t border-border">
+    <footer className="px-lg py-2xl border-t border-stroke-weak">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-xl mb-xl">
         {/* Explore */}
         <div>

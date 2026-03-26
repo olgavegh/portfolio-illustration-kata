@@ -1,6 +1,10 @@
 import { useState } from 'react'
 
-const THEMES = ['editorial', 'nature', 'dreamy']
+const THEMES = [
+  { key: 'editorial', color: '#aeb4ff' },
+  { key: 'nature',    color: '#052621' },
+  { key: 'dreamy',    color: '#232654' },
+]
 
 function ThemeToggle() {
   const [current, setCurrent] = useState(
@@ -14,19 +18,19 @@ function ThemeToggle() {
   }
 
   return (
-    <div className="flex gap-sm">
-      {THEMES.map(theme => (
+    <div className="fixed left-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-xs p-xs bg-surface-raised rounded-r-md shadow-sm">
+      {THEMES.map(({ key, color }) => (
         <button
-          key={theme}
-          onClick={() => setTheme(theme)}
-          className={`typo-ui px-3 py-1 rounded-full transition-colors ${
-            current === theme
-              ? 'bg-accent text-white'
-              : 'text-text-muted hover:text-text-primary'
+          key={key}
+          onClick={() => setTheme(key)}
+          title={key}
+          style={{ backgroundColor: color }}
+          className={`w-6 h-6 rounded-full transition-all ${
+            current === key
+              ? 'ring-2 ring-offset-2 ring-text-primary scale-110'
+              : 'opacity-60 hover:opacity-100'
           }`}
-        >
-          {theme}
-        </button>
+        />
       ))}
     </div>
   )
