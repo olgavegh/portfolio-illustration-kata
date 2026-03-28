@@ -30,11 +30,15 @@ function Footer() {
         <div className="layout-grid mb-2xl">
 
           {/* Headline + CTA — cols 1-5 */}
-          <div className="col-span-2 md:col-span-3 lg:col-span-5">
+          <div className="col-span-2 md:col-span-3 lg:col-span-5 lg:max-w-4/5">
             <h2 className="typo-display text-text-primary leading-tight max-w-[90%]">
               {settings.footer_message ?? 'Let\'s give your story a powerful visual language.'}
+              {settings.footer_movingicon && (
+                <img src={settings.footer_movingicon} className="inline w-[0.6em] h-[0.6em]] align-middle animate-spin [animation-duration:4s]" alt="" />
+              )}
             </h2>
-            <div className="mt-lg">
+
+            <div className="mt-2xl">
               {settings.contact_email && (
                 <a
                   href={`mailto:${settings.contact_email}`}
