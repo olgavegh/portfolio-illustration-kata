@@ -54,9 +54,9 @@ function ProjectPage() {
     <div>
 
       {/* Split hero — info right-aligned */}
-      <div className="layout-grid py-2xl min-h-[50vh] my-lg items-center">
+      <div className="layout-grid pb-2xl min-h-[50vh] my-lg items-center">
 
-        <div className="col-span-1 md:col-span-3 md:col-start-2 lg:col-span-4 lg:col-start-3 flex flex-col justify-center gap-md">
+        <div className="col-span-2 md:col-span-3 md:col-start-2 lg:col-span-4 lg:col-start-3 flex flex-col justify-center gap-md">
           <div>
             <h1 className="typo-title">{project.title}</h1>
             {project.subtitle && (

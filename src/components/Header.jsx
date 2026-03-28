@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { getSettings } from '../services/settings'
 import { LuAtSign, LuInstagram } from 'react-icons/lu'
+import Logo from './Logo'
 
 function Header({ onHeightChange }) {
   const [settings, setSettings] = useState({})
@@ -47,22 +48,7 @@ function Header({ onHeightChange }) {
       <div className="w-full max-w-400 mx-auto px-md md:px-lg py-md grid grid-cols-3 items-center">
 
         <Link to="/">
-          {settings.logo_url
-            ? <span
-              style={{
-                backgroundColor: 'var(--color-logo)',
-                maskImage: `url(${settings.logo_url})`,
-                WebkitMaskImage: `url(${settings.logo_url})`,
-                maskSize: 'contain',
-                WebkitMaskSize: 'contain',
-                maskRepeat: 'no-repeat',
-                WebkitMaskRepeat: 'no-repeat',
-              }}
-              className="block w-auto h-8"
-              aria-label={settings.site_title ?? 'Logo'}
-            />
-            : <span className="typo-ui">{settings.site_title ?? 'Kataco'}</span>
-          }
+          <Logo url={settings.logo_url} title={settings.site_title} />
         </Link>
         <nav className="flex flex-row justify-center gap-md">
           <Link to="/" className="typo-ui text-text-muted hover:text-accent active:text-accent transition-colors">Works</Link>

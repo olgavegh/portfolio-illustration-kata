@@ -120,5 +120,7 @@ INSERT INTO settings (key, value) VALUES
   ('contact_email', '"hello@kata.hu"'),
   ('instagram_url', '"https://instagram.com/katastudio"'),
   ('behance_url', '"https://behance.net/katastudio"'),
+  ('linkedin_url', '"https://linkedin.com/in/katastudio"'),
   ('location', '"Budapest"'),
+  ('footer_message', '"Let''s give your story a powerful visual language."'),
   ('logo_url', '"https://your-supabase-project.supabase.co/storage/v1/object/public/brand/logo.svg"');

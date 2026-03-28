@@ -283,6 +283,15 @@ body {
   letter-spacing: 0.02em;
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @keyframes wag {
   0%,
   100% {
@@ -300,7 +309,7 @@ body {
 @utility layout-grid {
   display: grid;
   gap: var(--spacing-md);
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(4, minmax(0, 1fr));

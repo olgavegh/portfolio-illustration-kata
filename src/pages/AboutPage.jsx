@@ -65,7 +65,7 @@ function AboutPage() {
 
       {/* ── Hero ── */}
       <section className={GRID}>
-        <div className="col-span-1 md:col-span-3 lg:col-span-4 flex flex-col gap-sm">
+        <div className="col-span-2 md:col-span-3 lg:col-span-4 flex flex-col gap-sm">
           {hero?.tagline && <p className="typo-label">{hero.tagline}</p>}
           {hero?.title && <h1 className="typo-display">{hero.title}</h1>}
         </div>
@@ -77,7 +77,7 @@ function AboutPage() {
           <div className="col-span-1">
             <span className="typo-label">{aboutSection.label}</span>
           </div>
-          <div className="col-span-1 md:col-span-3 lg:col-span-5 flex flex-col gap-md">
+          <div className="col-span-2 md:col-span-3 lg:col-span-5 flex flex-col gap-md">
             {aboutSection.paragraphs.map((text, i) => (
               <p key={i} className="typo-body">{text}</p>
             ))}
@@ -120,7 +120,7 @@ function AboutPage() {
             </g>
           </svg>
         </div>
-        <div className="col-span-1 md:col-span-3 lg:col-span-5">
+        <div className="col-span-2 md:col-span-3 lg:col-span-5">
           <EmblaCarousel slides={gallery.length > 0 ? gallery : PLACEHOLDER_SLIDES} options={OPTIONS} slideSize={slideSize} slideHeight='40svh' />
         </div>
       </section>
@@ -132,13 +132,13 @@ function AboutPage() {
             <div className="col-span-1 mb-sm">
               <span className="typo-label">{services.label}</span>
             </div>
-            <div className="col-span-1 md:col-span-3 lg:col-span-5 flex flex-col gap-md">
+            <div className="col-span-2 md:col-span-3 lg:col-span-5 flex flex-col gap-md">
               {services.desc && <p className="typo-body">{services.desc}</p>}
             </div>
           </div>
           <div className={`${GRID} my-2xl`}>
             {services.cards?.map((card, i) => (
-              <div key={i} className="col-span-1 md:col-span-2 bg-surface-raised p-xl flex flex-col gap-md rounded-sm">
+              <div key={i} className="col-span-2 md:col-span-2 bg-surface-raised p-xl flex flex-col gap-md rounded-sm">
                 {card.icon && (
                   <span style={{
                     display: 'inline-block',
@@ -171,7 +171,7 @@ function AboutPage() {
             <span className="typo-label">{journeySection.label}</span>
             {journeySection.title && <p className="typo-subtitle">{journeySection.title}</p>}
           </div>
-          <div className="col-span-1 md:col-span-3 lg:col-span-5 flex flex-col gap-md">
+          <div className="col-span-2 md:col-span-3 lg:col-span-5 flex flex-col gap-md">
             {journeySection.paragraphs.map((text, i) => (
               <p key={i} className="typo-body">{text}</p>
             ))}
