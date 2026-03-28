@@ -21,14 +21,15 @@ const EmblaCarousel = ({
   slides = [],
   options = {},
   renderSlide,
-  slideSize    = '80%',
+  slideSize = '80%',
   slideSpacing = '1rem',
-  slideHeight  = '19rem',
+  maxSlideSize = '28rem',
   showControls = true,
 }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
-  const tweenFactor  = useRef(0)
-  const tweenNodes   = useRef([])
+  const tweenFactor = useRef(0)
+  const tweenNodes = useRef([])
+  const videoRefs = useRef([])
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi)
@@ -44,13 +45,13 @@ const EmblaCarousel = ({
   }, [])
 
   const tweenParallax = useCallback((emblaApi, event) => {
-    const engine        = emblaApi.internalEngine()
+    const engine = emblaApi.internalEngine()
     const scrollProgress = emblaApi.scrollProgress()
-    const slidesInView  = emblaApi.slidesInView()
+    const slidesInView = emblaApi.slidesInView()
     const isScrollEvent = event?.type === 'scroll'
 
     emblaApi.scrollSnapList().forEach((scrollSnap, snapIndex) => {
-      let diffToTarget   = scrollSnap - scrollProgress
+      let diffToTarget = scrollSnap - scrollProgress
       const slidesInSnap = engine.slideRegistry[snapIndex]
 
       slidesInSnap.forEach((slideIndex) => {
@@ -62,13 +63,13 @@ const EmblaCarousel = ({
             if (slideIndex === loopItem.index && target !== 0) {
               const sign = Math.sign(target)
               if (sign === -1) diffToTarget = scrollSnap - (1 + scrollProgress)
-              if (sign ===  1) diffToTarget = scrollSnap + (1 - scrollProgress)
+              if (sign === 1) diffToTarget = scrollSnap + (1 - scrollProgress)
             }
           })
         }
 
-        const translate  = diffToTarget * (-1 * tweenFactor.current) * 100
-        const tweenNode  = tweenNodes.current[slideIndex]
+        const translate = diffToTarget * (-1 * tweenFactor.current) * 100
+        const tweenNode = tweenNodes.current[slideIndex]
         if (tweenNode) tweenNode.style.transform = `translateX(${translate}%)`
       })
     })
@@ -85,21 +86,31 @@ const EmblaCarousel = ({
       .on('reinit', tweenParallax)
       .on('scroll', tweenParallax)
       .on('slidefocus', tweenParallax)
+      .on('select', (api) => {
+        const selected = api.selectedScrollSnap()
+        videoRefs.current.forEach((el, i) => {
+          if (!el) return
+          i === selected ? el.play() : el.pause()
+        })
+      })
   }, [emblaApi, tweenParallax])
 
   const mediaStyle = {
-    height: slideHeight,
+    height: '100%',
     flex: `0 0 calc(115% + (${slideSpacing} * 2))`,
     maxWidth: 'none',
+    backgroundColor: 'var(--color-surface)'
   }
 
   const defaultRender = (item, index) => {
     if (item.type === 'video')
       return (
         <video
+          ref={el => { videoRefs.current[index] = el }}
           src={item.src}
           poster={item.poster}
-          muted loop playsInline autoPlay
+          muted loop playsInline
+          preload="none"
           className="object-cover"
           style={mediaStyle}
         />
@@ -128,10 +139,10 @@ const EmblaCarousel = ({
             <div
               key={index}
               className="min-w-0 shrink-0"
-              style={{ flex: `0 0 ${slideSize}`, paddingLeft: slideSpacing }}
+              style={{ flex: `0 0 ${slideSize}`, maxWidth: maxSlideSize, paddingLeft: slideSpacing }}
             >
               {/* Parallax wrapper */}
-              <div className="h-full overflow-hidden rounded-lg">
+              <div className="aspect-square overflow-hidden rounded-lg">
                 <div
                   data-parallax-layer
                   className="relative h-full w-full flex justify-center"
