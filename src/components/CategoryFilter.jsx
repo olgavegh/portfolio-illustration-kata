@@ -15,9 +15,8 @@ function CategoryFilter({ categories, scale, activeCategory, onFilterChange }) {
     }`
 
   return (
-    <div className="flex flex-col gap-sm mb-sm">
+    <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-sm mb-sm">
 
-      {/* Top bar — switch + filter toggle */}
       <div className="flex justify-between items-center">
         <Switch
           isOn={scale === 'project'}
@@ -26,24 +25,19 @@ function CategoryFilter({ categories, scale, activeCategory, onFilterChange }) {
         />
         <button
           onClick={() => setOpen(o => !o)}
-          className={`hover:bg-surface-raised p-xs rounded-lg transition-all ${open ? 'text-accent' : 'text-text-muted hover:text-text-primary'}`}
+          className={`md:hidden hover:bg-surface-raised p-xs rounded-lg transition-all ${open ? 'text-accent' : 'text-text-muted hover:text-text-primary'}`}
           aria-label="Toggle filters"
         >
           <LuSlidersHorizontal size={18} />
         </button>
       </div>
 
-      {/* Thematic row — visible when open */}
-      {open && (
-        <div className="flex flex-wrap gap-sm">
-          <button onClick={() => onFilterChange('category', null)} className={btn(activeCategory === null)}>All</button>
-          {thematicFilters.map((c) => (
-            <button key={c.slug} onClick={() => onFilterChange('category', c.slug)} className={btn(activeCategory === c.slug)}>
-              {c.title}
-            </button>
-          ))}
-        </div>
-      )}
+      <div className={`${open ? 'flex' : 'hidden'} md:flex flex-wrap gap-xs`}>
+        <button onClick={() => onFilterChange('category', null)} className={btn(activeCategory === null)}>All</button>
+        {thematicFilters.map((c) => (
+          <button key={c.slug} onClick={() => onFilterChange('category', c.slug)} className={btn(activeCategory === c.slug)}>{c.title}</button>
+        ))}
+      </div>
 
     </div>
   )
