@@ -1,7 +1,9 @@
 import Switch from "./Switch/Switch"
 import { useState } from "react"
+import { LuSlidersHorizontal } from "react-icons/lu"
 
 function CategoryFilter({ categories, scale, activeCategory, onFilterChange }) {
+  const [open, setOpen] = useState(false)
 
   const scaleFilters = categories.filter(c => c.type === 'scale')
   const thematicFilters = categories.filter(c => c.type === 'thematic')
@@ -13,35 +15,37 @@ function CategoryFilter({ categories, scale, activeCategory, onFilterChange }) {
     }`
 
   return (
-    <div className="flex flex-row justify-between gap-sm mb-sm">
+    <div className="flex flex-col gap-sm mb-sm">
 
-      {/* Scale row */}
-      <Switch
-        isOn={scale === 'project'}
-        handleToggle={() => onFilterChange('scale', scale === 'project' ? 'all' : 'project')}
-        label={scale === 'project' ? scaleFilters[1]?.title : scaleFilters[0]?.title}
-      />
-
-      {/* Thematic row */}
-      <div className="flex flex-wrap gap-sm">
+      {/* Top bar — switch + filter toggle */}
+      <div className="flex justify-between items-center">
+        <Switch
+          isOn={scale === 'project'}
+          handleToggle={() => onFilterChange('scale', scale === 'project' ? 'all' : 'project')}
+          label={scale === 'project' ? scaleFilters[1]?.title : scaleFilters[0]?.title}
+        />
         <button
-          onClick={() => onFilterChange('category', null)}
-          className={btn(activeCategory === null)}
+          onClick={() => setOpen(o => !o)}
+          className={`hover:bg-surface-raised p-xs rounded-lg transition-all ${open ? 'text-accent' : 'text-text-muted hover:text-text-primary'}`}
+          aria-label="Toggle filters"
         >
-          All
+          <LuSlidersHorizontal size={18} />
         </button>
-        {thematicFilters.map((c) => (
-          <button
-            key={c.slug}
-            onClick={() => onFilterChange('category', c.slug)}
-            className={btn(activeCategory === c.slug)}
-          >
-            {c.title}
-          </button>
-        ))}
       </div>
 
-    </div >
+      {/* Thematic row — visible when open */}
+      {open && (
+        <div className="flex flex-wrap gap-sm">
+          <button onClick={() => onFilterChange('category', null)} className={btn(activeCategory === null)}>All</button>
+          {thematicFilters.map((c) => (
+            <button key={c.slug} onClick={() => onFilterChange('category', c.slug)} className={btn(activeCategory === c.slug)}>
+              {c.title}
+            </button>
+          ))}
+        </div>
+      )}
+
+    </div>
   )
 }
 
