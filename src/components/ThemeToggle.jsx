@@ -1,9 +1,8 @@
 import { useState } from 'react'
 
 const THEMES = [
-  { key: 'editorial', color: '#aeb4ff' },
-  { key: 'nature',    color: '#052621' },
-  { key: 'dreamy',    color: '#232654' },
+  { key: 'editorial', color: 'white' },
+  { key: 'dreamy', color: '#232654' },
 ]
 
 function ThemeToggle() {
@@ -25,11 +24,10 @@ function ThemeToggle() {
           onClick={() => setTheme(key)}
           title={key}
           style={{ backgroundColor: color }}
-          className={`w-6 h-6 rounded-full transition-all ${
-            current === key
+          className={`w-6 h-6 rounded-full transition-all ${current === key
               ? 'ring-2 ring-offset-2 ring-text-primary scale-110'
               : 'opacity-60 hover:opacity-100'
-          }`}
+            }`}
         />
       ))}
     </div>

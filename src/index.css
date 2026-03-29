@@ -13,13 +13,9 @@
   --font-editorial-header: "Fraunces", serif;
   --font-editorial-body: "Manrope", sans-serif;
 
-  /* Nature — carved distinctive header · warm humanist body */
-  --font-nature-header: "Fraunces", serif;
-  --font-nature-body: "Manrope", sans-serif;
-
   /* Dreamy — bold wide geometric · neutral technical body */
   --font-dreamy-header: "Satoshi", sans-serif;
-  --font-nature-body: "Manrope", sans-serif;
+  --font-dreamy-body: "Manrope", sans-serif;
   /* --font-dreamy-header: "Unbounded", sans-serif;
   --font-dreamy-body:   "Geist", sans-serif; */
 
@@ -55,17 +51,6 @@
   --color-lilac-800: #3a3f85;
   --color-lilac-900: #232654;
 
-  /* Forest scale */
-  --color-forest-50: #f3f7f6;
-  --color-forest-100: #dce8e4;
-  --color-forest-200: #b8cec7;
-  --color-forest-300: #8fb3a8;
-  --color-forest-400: #5f8f82;
-  --color-forest-500: #08342b;
-  --color-forest-600: #072e26;
-  --color-forest-700: #052621;
-  --color-forest-800: #031e1a;
-  --color-forest-900: #010b09;
 
   /* Grey scale */
   --color-grey-50: #fafafa;
@@ -136,31 +121,6 @@
    Theme System
    ============================================= */
 
-/* Nature — forest greens · organic, rounded */
-[data-theme="nature"] {
-  --font-header: var(--font-nature-header);
-  --font-body: var(--font-nature-body);
-
-  --color-background: var(--color-forest-900); /*page background*/
-  --color-surface: var(--color-forest-800); /*card / elevated bg */
-  --color-surface-raised: var(
-    --color-forest-700
-  ); /* elevated surfaces, cards */
-  --color-stroke-strong: var(--color-forest-600);
-  --color-stroke-weak: var(--color-forest-500);
-
-  --color-accent: var(--color-lime-600); /*interactive, highlights*/
-  --color-logo: var(--color-forest-500);
-  --color-text-muted: var(--color-forest-400); /*labels, captions, metadata*/
-  --color-text-secondary: var(--color-forest-100); /*body paragraphs*/
-  --color-text-primary: var(--color-forest-50); /*headings, titles*/
-
-  --color-button-secondary: transparent; /* secondary button bg */
-
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 20px;
-}
 
 /* Dreamy — soft lilac · very soft, pillowy */
 [data-theme="dreamy"] {
