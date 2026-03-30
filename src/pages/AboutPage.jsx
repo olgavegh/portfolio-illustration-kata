@@ -47,9 +47,7 @@ function AboutPage() {
   if (loading) return <div className="py-xl"><p className="text-text-muted">Loading...</p></div>
   if (!page) return <div className="py-xl"><p className="text-text-muted">Page not found</p></div>
 
-  const { hero, textcontent = [], services, gallery } = page.content
-  const aboutSection = textcontent.find(s => s.label === 'About')
-  const journeySection = textcontent.find(s => s.label === 'Journey')
+  const { hero, about, journey, wishlist, quote, gallery, services } = page.content
 
   return (
     <div className="flex flex-col gap-3xl py-xl">
@@ -63,13 +61,13 @@ function AboutPage() {
       </section>
 
       {/* ── About ── */}
-      {aboutSection && (
+      {about && (
         <section className={GRID}>
           <div className="col-span-1">
-            <span className="typo-label">{aboutSection.label}</span>
+            <span className="typo-label">About</span>
           </div>
           <div className="col-span-2 md:col-span-3 lg:col-span-5 flex flex-col gap-md">
-            {aboutSection.paragraphs.map((text, i) => (
+            {about.paragraphs.map((text, i) => (
               <p key={i} className="typo-body">{text}</p>
             ))}
           </div>
@@ -79,20 +77,33 @@ function AboutPage() {
       {/* ── Gallery ── */}
       {gallery?.length > 0 && <GalleryStack items={gallery} />}
 
-      {/* ── Services ── */}
-      {services && (
-        <section>
-          <div className={GRID}>
+      {/* ── Services pull quote + wishlist ── */}
+      {services?.desc && (
+        <div className="flex flex-col gap-sm">
+          <div className="layout-grid">
             <div className="col-span-1 mb-sm">
               <span className="typo-label">{services.label}</span>
             </div>
-            <div className="col-span-2 md:col-span-3 lg:col-span-5 flex flex-col gap-md">
-              {services.desc && <p className="typo-body">{services.desc}</p>}
-            </div>
+            <p className="typo-subtitle col-span-4 col-start-1 md:col-start-2">{services.desc}</p>
           </div>
-          <div className={`${GRID} my-2xl`}>
+          {wishlist && (
+            <div className={GRID}>
+              <div className="col-span-1 col-start-2 md:col-span-2 md:col-start-3 lg:col-span-2 lg:col-start-5 flex flex-col">
+                {wishlist.title && <p className="typo-eyebrow text-text-primary mb-xs">{wishlist.title}</p>}
+                {wishlist.items?.map((text, i) => (
+                  <p key={i} className="typo-caption">{text}</p>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+      {/* ── Services ── */}
+      {services && (
+        <section>
+          <div className={`${GRID}`}>
             {services.cards?.map((card, i) => (
-              <div key={i} className="col-span-2 md:col-span-2 bg-surface-raised p-xl flex flex-col gap-md rounded-sm">
+              <div key={i} className="col-span-2 md:col-span-2 bg-surface-raised p-lg flex flex-col gap-md rounded-sm">
                 {card.icon && (
                   <span style={{
                     display: 'inline-block',
@@ -109,7 +120,7 @@ function AboutPage() {
                 <p className="typo-card-title">{card.title}</p>
                 <div>
                   <p className="typo-body">{card.desc}</p>
-                  {card.details && <p className="typo-eyebrow mt-xs text-accent">{card.details}</p>}
+                  {card.details && <p className="typo-caption mt-xs">{card.details}</p>}
                 </div>
               </div>
             ))}
@@ -117,20 +128,42 @@ function AboutPage() {
         </section>
       )}
 
-      {/* ── Journey ── */}
-      {journeySection && (
+
+
+      {/* ── Quote ── */}
+
+      {quote && (
+
         <section className={GRID}>
-          <div className="col-span-1 flex flex-col gap-xs">
-            <span className="typo-label">{journeySection.label}</span>
-            {journeySection.title && <p className="typo-subtitle">{journeySection.title}</p>}
+
+          <div className="col-span-6 rounded-sm p-xl flex flex-col gap-xs">
+            <p className="typo-subtitle">&ldquo;{quote.text}&rdquo;</p>
+            {quote.author && <p className="typo-label mt-sm">{quote.author}</p>}
           </div>
-          <div className="col-span-2 md:col-span-3 lg:col-span-5 flex flex-col gap-md">
-            {journeySection.paragraphs.map((text, i) => (
+
+        </section>
+      )}
+
+      {/* ── Journey ── */}
+      {journey && (
+        <section className={GRID}>
+          <div className="col-span-1">
+            <span className="typo-label">{journey.label}</span>
+          </div>
+          {journey.title && (
+            <p className="col-span-1 md:col-span-3 lg:col-span-5 typo-subtitle">{journey.title}</p>
+          )}
+          <div className="col-span-2 md:col-span-3 lg:col-span-5 md:col-start-2 lg:col-start-2 flex flex-col gap-md">
+            {journey.paragraphs.map((text, i) => (
               <p key={i} className="typo-body">{text}</p>
             ))}
           </div>
         </section>
       )}
+
+
+
+
 
     </div>
   )

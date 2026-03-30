@@ -32,7 +32,7 @@
   /* ── Spacing (8pt scale) ── */
   --spacing-xs: 0.5rem; /*  8px */
   --spacing-sm: 1rem; /*  16px */
-  --spacing-md: 2rem; /* 24px */
+  --spacing-md: 1.5rem; /* 24px */
   --spacing-lg: 2rem; /* 32px */
   --spacing-xl: 3rem; /* 48px */
   --spacing-2xl: 5rem; /* 80px */
@@ -50,7 +50,7 @@
   --color-lilac-700: #5157ad;
   --color-lilac-800: #3a3f85;
   --color-lilac-900: #232654;
-
+  --color-lilac-950: #111328;
 
   /* Grey scale */
   --color-grey-50: #fafafa;
@@ -89,10 +89,10 @@
   --color-logo: var(--color-lilac-900);
   --color-text-primary: var(--color-lilac-950); /*headings, titles*/
   --color-text-secondary: oklch(
-    from var(--color-text-primary) calc(l + 0.25) calc(c * 0.4) h
+    from var(--color-text-primary) calc(l + 0.1) calc(c * 0.4) h
   ); /*body paragraphs*/
   --color-text-muted: oklch(
-    from var(--color-text-primary) calc(l + 0.3) calc(c * 0.4) h
+    from var(--color-text-primary) calc(l + 0.35) calc(c * 0.2) h
   ); /*labels, captions, metadata*/
   --color-surface-raised: var(--color-grey-100); /* elevated surfaces, cards */
   --color-button-secondary: transparent; /* secondary button bg */
@@ -120,7 +120,6 @@
 /* =============================================
    Theme System
    ============================================= */
-
 
 /* Dreamy — soft lilac · very soft, pillowy */
 [data-theme="dreamy"] {
@@ -187,7 +186,7 @@ body {
   font-weight: 200;
   letter-spacing: 0;
   line-height: 1.3;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 /*  CARD TITLE — Card/chapter headings */
@@ -244,8 +243,12 @@ body {
 }
 
 @keyframes slideUp {
-  from { transform: translateY(100%); }
-  to   { transform: translateY(0); }
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 @keyframes marquee {

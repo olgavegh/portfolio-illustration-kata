@@ -59,30 +59,33 @@ INSERT INTO pages (slug, title, content, published) VALUES
       "title": "I believe in the power of illustration.",
       "tagline": "Illustrator & Visual Storyteller"
     },
-    "textcontent": [
-      {
-        "label": "About",
-        "title": "",
-        "paragraphs": [
-          "I act as a visual translator—combining artistic expertise with strategic thinking to ensure every illustration has a purpose.",
-          "I provide visual solutions designed to connect, educate, and entertain. With a focus on editorial illustration, I bridge the gap between a complex concept and a finished visual through my collaborative process.",
-          "I am particularly drawn to projects involving nature, the environment, science, and gastronomy—or better yet, a mixture of all four.",
-          "My dream list includes more book projects, cover designs, and deep-dives into educational illustration.",
-          "If I weren''t a visual translator, I''d likely be an ornithologist or a beekeeper (or both)."
-        ]
-      },
-      {
-        "label": "Journey",
-        "title": "What''s next?",
-        "paragraphs": [
-          "I''m preparing for a big adventure: moving to Denmark with my family in the summer of 2026. Spændende! If you''re visiting my site from there: Vi ses! Hav en god dag, og måske kan vi mødes!",
-          "I''m on the lookout for new collaborations and creative partners to join me in this next chapter. Whether you''re in Denmark or halfway across the world, let''s give your story a powerful visual voice."
-        ]
-      }
-    ],
+    "about": {
+      "paragraphs": [
+        "I act as a visual translator—combining artistic expertise with strategic thinking to ensure every illustration has a purpose.",
+        "I provide visual solutions designed to connect, educate, and entertain. With a focus on editorial illustration, I bridge the gap between a complex concept and a finished visual through my collaborative process.",
+        "I am particularly drawn to projects involving nature, the environment, science, and gastronomy—or better yet, a mixture of all four.",
+        "My dream list includes more book projects, cover designs, and deep-dives into educational illustration.",
+        "If I weren''t a visual translator, I''d likely be an ornithologist or a beekeeper (or both)."
+      ]
+    },
+    "journey": {
+      "title": "What''s next?",
+      "paragraphs": [
+        "I''m preparing for a big adventure: moving to Denmark with my family in the summer of 2026. Spændende! If you''re visiting my site from there: Vi ses! Hav en god dag, og måske kan vi mødes!",
+        "I''m on the lookout for new collaborations and creative partners to join me in this next chapter. Whether you''re in Denmark or halfway across the world, let''s give your story a powerful visual voice."
+      ]
+    },
+    "wishlist": {
+      "title": "",
+      "items": []
+    },
+    "quote": {
+      "text": "",
+      "author": ""
+    },
     "gallery": [
       { "type": "image", "src": "", "alt": "" },
-      { "type": "video", "src": "", "poster": "" },
+      { "type": "image", "src": "", "alt": "" },
       { "type": "image", "src": "", "alt": "" }
     ],
     "services": {
