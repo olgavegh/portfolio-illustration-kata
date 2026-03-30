@@ -101,9 +101,9 @@ function AboutPage() {
       {/* ── Services ── */}
       {services && (
         <section>
-          <div className={`${GRID}`}>
+          <div className="flex gap-md overflow-x-auto scrollbar-hide max-md:snap-x max-md:snap-mandatory max-md:scroll-pl-md pb-sm -mx-md px-md lg:layout-grid lg:mx-0 lg:px-0">
             {services.cards?.map((card, i) => (
-              <div key={i} className="col-span-2 md:col-span-2 bg-surface-raised p-lg flex flex-col gap-md rounded-sm">
+              <div key={i} className="shrink-0 snap-start w-[75vw] lg:w-auto lg:col-span-2 bg-surface-raised p-lg flex flex-col gap-md rounded-sm">
                 {card.icon && (
                   <span style={{
                     display: 'inline-block',
