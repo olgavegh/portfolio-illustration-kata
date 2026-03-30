@@ -3,6 +3,29 @@ import { getPageBySlug } from '../services/pages'
 
 const GRID = 'layout-grid'
 
+// Scattered photo stack, hover lifts each card
+const STACK = [
+  '-rotate-[5deg] translate-y-3 z-[1]',
+  'rotate-[3deg] -translate-y-2.5 z-[3]',
+  '-rotate-[2deg] translate-y-1.5 z-[2]',
+]
+function GalleryStack({ items }) {
+  if (!items?.length) return null
+  return (
+    <div className="flex items-center justify-center py-xl">
+      {items.map((item, i) => (
+        <div
+          key={i}
+          className={`w-35 h-35 md:w-60 md:h-60 -mx-3 rounded-sm overflow-hidden shadow-lg transition-all duration-300 hover:scale-110 hover:rotate-0 hover:z-10 cursor-pointer ${STACK[i % STACK.length]}`}
+        >
+          <img src={item.src} alt={item.alt || ''} className="w-full h-full object-cover" />
+        </div>
+      ))}
+    </div>
+  )
+}
+
+
 function AboutPage() {
   const [page, setPage] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -24,7 +47,7 @@ function AboutPage() {
   if (loading) return <div className="py-xl"><p className="text-text-muted">Loading...</p></div>
   if (!page) return <div className="py-xl"><p className="text-text-muted">Page not found</p></div>
 
-  const { hero, textcontent = [], services } = page.content
+  const { hero, textcontent = [], services, gallery } = page.content
   const aboutSection = textcontent.find(s => s.label === 'About')
   const journeySection = textcontent.find(s => s.label === 'Journey')
 
@@ -52,6 +75,9 @@ function AboutPage() {
           </div>
         </section>
       )}
+
+      {/* ── Gallery ── */}
+      {gallery?.length > 0 && <GalleryStack items={gallery} />}
 
       {/* ── Services ── */}
       {services && (
