@@ -9,17 +9,12 @@
 /* Custom Theme */
 @theme {
   /* ── Font sets ── */
-  /* Editorial — serif heading · geometric sans body */
-  --font-editorial-header: "Fraunces", serif;
-  --font-editorial-body: "Manrope", sans-serif;
 
-  /* Dreamy — bold wide geometric · neutral technical body */
-  --font-dreamy-header: "Satoshi", sans-serif;
-  --font-dreamy-body: "Manrope", sans-serif;
-  /* --font-dreamy-header: "Unbounded", sans-serif;
-  --font-dreamy-body:   "Geist", sans-serif; */
+    /* ── Semantic font roles (default: editorial) ── */
+  --font-header: "Fraunces", serif;
+  --font-body: "Manrope", sans-serif;
 
-  /* ── Radius ── */
+   /* ── Radius ── */
   --radius-sm: 4px; /* tags, badges, small inputs */
   --radius-md: 8px; /* buttons, filter pills */
   --radius-lg: 12px; /* cards, panels */
@@ -97,9 +92,7 @@
   --color-surface-raised: var(--color-grey-100); /* elevated surfaces, cards */
   --color-button-secondary: transparent; /* secondary button bg */
 
-  /* ── Semantic font roles (default: editorial) ── */
-  --font-header: var(--font-editorial-header);
-  --font-body: var(--font-editorial-body);
+
 
   /* ── Type scale (fluid, 320px → 1440px) ── */
   --fs-display: clamp(2.5rem, calc(5vw + 1.5rem), 6rem); /* 40px → 96px  */
@@ -123,8 +116,6 @@
 
 /* Dreamy — soft lilac · very soft, pillowy */
 [data-theme="dreamy"] {
-  --font-header: var(--font-dreamy-header);
-  --font-body: var(--font-dreamy-body);
   --radius-sm: 12px;
   --radius-md: 20px;
   --radius-lg: 28px;
