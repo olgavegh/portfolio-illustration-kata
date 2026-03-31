@@ -6,7 +6,7 @@ import AboutPage from './pages/AboutPage'
 import ProjectPage from './pages/ProjectPage'
 import SplashScreen from './components/SplashScreen'
 
-const SPLASH_DURATION = 1500 // ms
+const SPLASH_DURATION = 2500 // ms
 
 function App() {
   const [splash, setSplash] = useState(true)

@@ -10,11 +10,11 @@
 @theme {
   /* ── Font sets ── */
 
-    /* ── Semantic font roles (default: editorial) ── */
+  /* ── Semantic font roles (default: editorial) ── */
   --font-header: "Fraunces", serif;
   --font-body: "Manrope", sans-serif;
 
-   /* ── Radius ── */
+  /* ── Radius ── */
   --radius-sm: 4px; /* tags, badges, small inputs */
   --radius-md: 8px; /* buttons, filter pills */
   --radius-lg: 12px; /* cards, panels */
@@ -77,7 +77,7 @@
 
   /* Editorial — lilac + neutral */
   --color-background: white; /*page background*/
-  --color-surface: var(--color-grey-200); /*card / elevated bg */
+  --color-surface: var(--color-grey-100); /*card / elevated bg */
   --color-stroke-weak: var(--color-grey-200);
   --color-stroke-strong: var(--color-grey-400);
   --color-accent: var(--color-lilac-700); /*interactive, highlights*/
@@ -91,8 +91,6 @@
   ); /*labels, captions, metadata*/
   --color-surface-raised: var(--color-grey-100); /* elevated surfaces, cards */
   --color-button-secondary: transparent; /* secondary button bg */
-
-
 
   /* ── Type scale (fluid, 320px → 1440px) ── */
   --fs-display: clamp(2.5rem, calc(5vw + 1.5rem), 6rem); /* 40px → 96px  */
@@ -267,7 +265,9 @@ body {
 
 @utility scrollbar-hide {
   scrollbar-width: none;
-  &::-webkit-scrollbar { display: none; }
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @utility layout-grid {
