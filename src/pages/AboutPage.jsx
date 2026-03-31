@@ -107,8 +107,8 @@ function AboutPage() {
                 {card.icon && (
                   <span style={{
                     display: 'inline-block',
-                    width: '1.5rem',
-                    height: '1.5rem',
+                    width: '3rem',
+                    height: '3rem',
                     backgroundColor: 'var(--color-accent)',
                     maskImage: `url(${card.icon})`,
                     WebkitMaskImage: `url(${card.icon})`,
