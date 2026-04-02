@@ -74,7 +74,7 @@ function HomePage() {
   ].sort((a, b) => a.order_index - b.order_index)
 
   return (
-    <div className="">
+    <div className="min-h-screen">
 
       {pageContent.hero?.headline && (
         <div className="pb-2xl lg:pb-3xl">
