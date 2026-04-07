@@ -57,7 +57,7 @@ function Header({ onHeightChange }) {
       <div className="w-full max-w-400 mx-auto px-md md:px-lg py-md grid grid-cols-3 items-center">
 
         <Link to="/" className="col-span-2 md:col-span-1">
-          <Logo url={settings.logo_url} title={settings.site_title} />
+          <Logo url={settings.header_logo_url} title={settings.site_title} />
         </Link>
         <nav className="hidden md:flex flex-row justify-center gap-md">
           <Link to="/" className="typo-ui text-text-muted hover:text-accent active:text-accent transition-colors">Works</Link>
@@ -99,7 +99,7 @@ function Header({ onHeightChange }) {
         >
           <div className="flex justify-between py-md">
             <Link to="/" className="w-full">
-              <Logo url={settings.logo_url} title={settings.site_title} />
+              <Logo url={settings.header_logo_url} title={settings.site_title} />
             </Link>
             <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="text-text-primary">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none">

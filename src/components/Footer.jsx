@@ -75,7 +75,7 @@ function Footer() {
 
           {/* Name — cols 1-2 */}
           <div className="col-span-2 lg:col-span-4 mb-lg md:mb-0">
-            <Logo url={settings.logo_url} title={settings.site_title} className="w-auto h-lg md:h-xl" />
+            <Logo url={settings.footer_logo_url} title={settings.site_title} className="w-auto h-lg md:h-xl" />
 
           </div>
 

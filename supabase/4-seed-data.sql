@@ -94,19 +94,22 @@ INSERT INTO pages (slug, title, content, published) VALUES
       "desc": "I am particularly drawn to projects involving nature, lifestyle, science, and gastronomy—or better yet, a mixture of all four.",
       "cards": [
         {
-          "icon": "",
+          "light-icon": "",
+          "dark-icon": "",
           "title": "Illustration",
           "desc": "Thought-to-Form. Translating the invisible into the visible.",
           "details": "editorial illustration / book cover / infographic / cover art / storytelling"
         },
         {
-          "icon": "",
+          "light-icon": "",
+          "dark-icon": "",
           "title": "Graphic Design",
           "desc": "Brand Nesting. Building a cohesive visual home for your message.",
           "details": "brand identity & logo design / layout & editorial design / social media visuals / packaging / presentation design"
         },
         {
-          "icon": "",
+          "light-icon": "",
+          "dark-icon": "",
           "title": "Walk & Talk",
           "desc": "Getting out of the nest to brainstorm in the wild.",
           "details": "strategic birdwatching / field notes"
@@ -126,4 +129,5 @@ INSERT INTO settings (key, value) VALUES
   ('linkedin_url', '"https://linkedin.com/in/katastudio"'),
   ('location', '"Budapest"'),
   ('footer_message', '"Let''s give your story a powerful visual language."'),
-  ('logo_url', '"https://your-supabase-project.supabase.co/storage/v1/object/public/brand/logo.svg"');
+  ('header_logo_url', '');
+  ('footer_logo_url', '');
