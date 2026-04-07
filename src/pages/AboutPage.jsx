@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getPageBySlug } from '../services/pages'
+import { useTheme } from '../hooks/useTheme'
 
 const GRID = 'layout-grid'
 
@@ -27,6 +28,7 @@ function GalleryStack({ items }) {
 
 
 function AboutPage() {
+  const theme = useTheme()
   const [page, setPage] = useState(null)
   const [loading, setLoading] = useState(true)
 
@@ -104,19 +106,22 @@ function AboutPage() {
           <div className="flex gap-md overflow-x-auto scrollbar-hide max-md:snap-x max-md:snap-mandatory max-md:scroll-pl-md pb-sm -mx-md px-md lg:layout-grid lg:mx-0 lg:px-0">
             {services.cards?.map((card, i) => (
               <div key={i} className="shrink-0 snap-start w-[75vw] lg:w-auto lg:col-span-2 bg-surface-raised p-lg flex flex-col gap-md rounded-sm">
-                {card.icon && (
-                  <span style={{
-                    display: 'inline-block',
-                    width: '3rem',
-                    height: '3rem',
-                    backgroundColor: 'var(--color-accent)',
-                    maskImage: `url(${card.icon})`,
-                    WebkitMaskImage: `url(${card.icon})`,
-                    maskSize: 'contain',
-                    maskRepeat: 'no-repeat',
-                    maskPosition: 'center',
-                  }} />
-                )}
+                {(card['light-icon'] || card['dark-icon']) && (() => {
+                  const iconUrl = theme === 'dreamy' ? card['dark-icon'] : card['light-icon']
+                  return iconUrl ? (
+                    <span style={{
+                      display: 'inline-block',
+                      width: '3rem',
+                      height: '3rem',
+                      backgroundColor: 'var(--color-accent)',
+                      maskImage: `url(${iconUrl})`,
+                      WebkitMaskImage: `url(${iconUrl})`,
+                      maskSize: 'contain',
+                      maskRepeat: 'no-repeat',
+                      maskPosition: 'center',
+                    }} />
+                  ) : null
+                })()}
                 <p className="typo-card-title">{card.title}</p>
                 <div>
                   <p className="typo-body">{card.desc}</p>
