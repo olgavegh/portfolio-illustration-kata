@@ -34,7 +34,17 @@ function Footer() {
             <h2 className="typo-display text-text-primary leading-tight max-w-[90%]">
               {settings.footer_message ?? 'Let\'s give your story a powerful visual language.'}
               {settings.footer_movingicon && (
-                <img src={settings.footer_movingicon} className="inline w-[0.6em] h-[0.6em]] align-middle animate-spin [animation-duration:4s]" alt="" />
+                <span
+                  className="inline-block w-[0.7em] h-[0.7em] align-middle animate-spin [animation-duration:4s]"
+                  style={{
+                    backgroundColor: 'var(--color-text-primary)',
+                    maskImage: `url(${settings.footer_movingicon})`,
+                    WebkitMaskImage: `url(${settings.footer_movingicon})`,
+                    maskSize: 'contain',
+                    maskRepeat: 'no-repeat',
+                    maskPosition: 'center',
+                  }}
+                />
               )}
             </h2>
 
