@@ -9,7 +9,7 @@ function CategoryFilter({ categories, scale, activeCategory, onFilterChange }) {
   const thematicFilters = categories.filter(c => c.type === 'thematic')
 
   const btn = (isActive) =>
-    `px-sm py-xs typo-ui rounded-lg transition-colors duration-300 ${isActive
+    `p-xs sm:px-sm sm:py-xs typo-ui rounded-lg transition-colors duration-300 ${isActive
       ? 'bg-accent text-background'
       : 'bg-button-secondary text-text-primary hover:bg-surface-raised'
     }`
@@ -25,14 +25,14 @@ function CategoryFilter({ categories, scale, activeCategory, onFilterChange }) {
         />
         <button
           onClick={() => setOpen(o => !o)}
-          className={`md:hidden hover:bg-surface-raised p-xs rounded-lg transition-all ${open ? 'text-accent' : 'text-text-muted hover:text-text-primary'}`}
+          className={`sm:hidden hover:bg-surface-raised p-xs rounded-lg transition-all ${open ? 'text-accent' : 'text-text-muted hover:text-text-primary'}`}
           aria-label="Toggle filters"
         >
           <LuSlidersHorizontal size={18} />
         </button>
       </div>
 
-      <div className={`${open ? 'flex' : 'hidden'} md:flex flex-wrap gap-xs`}>
+      <div className={`${open ? 'flex ' : 'hidden'} sm:flex flex-wrap justify-between sm:gap-xs `}>
         <button onClick={() => onFilterChange('category', null)} className={btn(activeCategory === null)}>All</button>
         {thematicFilters.map((c) => (
           <button key={c.slug} onClick={() => onFilterChange('category', c.slug)} className={btn(activeCategory === c.slug)}>{c.title}</button>
