@@ -120,14 +120,14 @@ INSERT INTO pages (slug, title, content, published) VALUES
 
 -- SETTINGS
 INSERT INTO settings (key, value) VALUES
-  ('site_title', '"Kata Studio"'),
-  ('site_description', '"Illustrator artist"'),
-  ('homepage_intro', '"Exploring material and form through illustration"'),
-  ('contact_email', '"hello@kata.hu"'),
-  ('instagram_url', '"https://instagram.com/katastudio"'),
-  ('behance_url', '"https://behance.net/katastudio"'),
-  ('linkedin_url', '"https://linkedin.com/in/katastudio"'),
-  ('location', '"Budapest"'),
-  ('footer_message', '"Let''s give your story a powerful visual language."'),
-  ('header_logo_url', '');
+  ('site_title', 'Kata Studio'),
+  ('site_description', 'Illustrator artist'),
+  ('homepage_intro', 'Exploring material and form through illustration'),
+  ('contact_email', 'hello@kata.hu'),
+  ('instagram_url', 'https://instagram.com/katastudio'),
+  ('behance_url', 'https://behance.net/katastudio'),
+  ('linkedin_url', 'https://linkedin.com/in/katastudio'),
+  ('location', 'Budapest'),
+  ('footer_message', 'Let''s give your story a powerful visual language.'),
+  ('header_logo_url', ''),
   ('footer_logo_url', '');

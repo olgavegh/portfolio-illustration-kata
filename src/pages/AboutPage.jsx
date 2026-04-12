@@ -107,7 +107,7 @@ function AboutPage() {
             {services.cards?.map((card, i) => (
               <div key={i} className="shrink-0 snap-start w-[75vw] lg:w-auto lg:col-span-2 bg-surface-raised p-lg flex flex-col gap-md rounded-sm">
                 {(card['light-icon'] || card['dark-icon']) && (() => {
-                  const iconUrl = theme === 'dreamy' ? card['dark-icon'] : card['light-icon']
+                  const iconUrl = theme === 'dark' ? card['dark-icon'] : card['light-icon']
                   return iconUrl ? (
                     <span style={{
                       display: 'inline-block',

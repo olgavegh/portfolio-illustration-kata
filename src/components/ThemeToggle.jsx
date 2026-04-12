@@ -1,35 +1,56 @@
-import { useState } from 'react'
-
-const THEMES = [
-  { key: 'editorial', color: 'white' },
-  { key: 'dreamy', color: '#232654' },
-]
+import { useState, useEffect } from 'react'
+import { getSetting } from '../services/settings'
 
 function ThemeToggle() {
-  const [current, setCurrent] = useState(
-    document.documentElement.dataset.theme ?? 'editorial'
+  const [darkTheme, setDarkTheme] = useState(
+    () => document.documentElement.dataset.theme === 'dark'
   )
+  const [lightIcon, setLightIcon] = useState(null)
+  const [darkIcon, setDarkIcon] = useState(null)
 
-  const setTheme = (theme) => {
-    document.documentElement.dataset.theme = theme
-    localStorage.setItem('theme', theme)
-    setCurrent(theme)
+  useEffect(() => {
+    async function fetchIcons() {
+      try {
+        const [light, dark] = await Promise.all([
+          getSetting('themelight_icon_url'),
+          getSetting('themedark_icon_url'),
+        ])
+        setLightIcon(light)
+        setDarkIcon(dark)
+      } catch (error) {
+        console.error('Error fetching theme icons:', error)
+      }
+    }
+    fetchIcons()
+  }, [])
+
+  const toggle = () => {
+    setDarkTheme(prev => {
+      const next = !prev
+      const theme = next ? 'dark' : 'light'
+      document.documentElement.dataset.theme = theme
+      localStorage.setItem('theme', theme)
+      return next
+    })
   }
 
   return (
-    <div className="fixed left-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-xs p-xs bg-surface-raised rounded-r-md shadow-sm">
-      {THEMES.map(({ key, color }) => (
-        <button
-          key={key}
-          onClick={() => setTheme(key)}
-          title={key}
-          style={{ backgroundColor: color }}
-          className={`w-6 h-6 rounded-full transition-all ${current === key
-              ? 'ring-2 ring-offset-2 ring-text-primary scale-110'
-              : 'opacity-60 hover:opacity-100'
-            }`}
-        />
-      ))}
+    <div className="fixed right-4 bottom-4 z-50">
+      <button
+        onClick={toggle}
+        title={darkTheme ? 'Switch to light theme' : 'Switch to dark theme'}
+        className="w-12 h-12 transition-transform hover:scale-110 bg-accent rounded-full p-1"
+      >
+        {(darkTheme ? darkIcon : lightIcon)
+          ? <img
+            src={darkTheme ? darkIcon : lightIcon}
+            alt=""
+            className="w-full h-full object-contain"
+            style={{ filter: darkTheme ? 'invert(0)' : 'invert(1)' }}
+          />
+          : <span className="block w-full h-full rounded-full" style={{ backgroundColor: darkTheme ? 'white' : '#232654' }} />
+        }
+      </button>
     </div>
   )
 }

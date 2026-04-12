@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react'
 
 export function useTheme() {
   const [theme, setTheme] = useState(
-    () => document.documentElement.dataset.theme ?? 'editorial'
+    () => document.documentElement.dataset.theme ?? 'light'
   )
 
   useEffect(() => {
     const observer = new MutationObserver(() => {
-      setTheme(document.documentElement.dataset.theme ?? 'editorial')
+      setTheme(document.documentElement.dataset.theme ?? 'light')
     })
     observer.observe(document.documentElement, {
       attributes: true,

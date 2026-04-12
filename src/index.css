@@ -10,7 +10,7 @@
 @theme {
   /* ── Font sets ── */
 
-  /* ── Semantic font roles (default: editorial) ── */
+  /* ── Semantic font roles (default: lightTheme) ── */
   --font-header: "Fraunces", serif;
   --font-body: "Manrope", sans-serif;
 
@@ -113,7 +113,7 @@
    ============================================= */
 
 /* Dreamy — soft lilac · very soft, pillowy */
-[data-theme="dreamy"] {
+[data-theme="dark"] {
   --radius-sm: 12px;
   --radius-md: 20px;
   --radius-lg: 28px;
@@ -135,6 +135,10 @@
 /* Base styles */
 html {
   scrollbar-gutter: stable;
+}
+
+*, *::before, *::after {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, fill 0.4s ease;
 }
 
 body {
