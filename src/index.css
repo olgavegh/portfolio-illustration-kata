@@ -120,8 +120,8 @@
   --color-background: var(--color-lilac-900); /*page background*/
   --color-surface: var(--color-lilac-800); /*card / elevated bg */
   --color-surface-raised: var(--color-lilac-700); /* elevated surfaces, cards */
-  --color-stroke-strong: var(--color-lilac-600);
-  --color-stroke-weak: var(--color-lilac-500);
+  --color-stroke-weak: var(--color-lilac-600);
+  --color-stroke-strong: var(--color-lilac-500);
 
   --color-accent: var(--color-lime-600); /*interactive, highlights*/
   --color-logo: var(--color-lilac-400);
@@ -137,8 +137,14 @@ html {
   scrollbar-gutter: stable;
 }
 
-*, *::before, *::after {
-  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, fill 0.4s ease;
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease,
+    fill 0.4s ease;
 }
 
 body {

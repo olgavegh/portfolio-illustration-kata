@@ -75,9 +75,6 @@ function Footer() {
               {settings.instagram_url && (
                 <a href={settings.instagram_url} target="_blank" rel="noopener noreferrer" className="typo-ui text-text-muted hover:text-accent transition-colors">Instagram</a>
               )}
-              {settings.behance_url && (
-                <a href={settings.behance_url} target="_blank" rel="noopener noreferrer" className="typo-ui text-text-muted hover:text-accent transition-colors">Behance</a>
-              )}
               {settings.linkedin_url && (
                 <a href={settings.linkedin_url} target="_blank" rel="noopener noreferrer" className="typo-ui text-text-muted hover:text-accent transition-colors">LinkedIn</a>
               )}
@@ -88,21 +85,26 @@ function Footer() {
         {/* ── Bottom bar ── */}
         <div className="layout-grid pt-lg border-t border-stroke-weak items-start">
 
-          <div className="col-span-1 md:col-span-2 lg:col-span-3">
+          <div className="col-span-2 md:col-span-2 lg:col-span-3">
             <Logo url={settings.footer_logo_url} title={settings.site_title} className="w-auto h-xl md:h-2xl" />
           </div>
 
-          <div>
+          <div className="lg:col-span-2">
             {settings.tagline && (
-              <p className="typo-caption text-text-muted">{settings.tagline}</p>
+              <p className="typo-ui text-text-secondary">{settings.tagline}</p>
+            )}
+            {settings.tagline_location && (
+              <p className="typo-ui text-text-muted">{settings.tagline_location}</p>
             )}
           </div>
 
-          <div className="col-span-1 lg:col-span-2 flex flex-col gap-xs">
+          <div className="col-span-1 lg:col-span-1 flex flex-col">
             {settings.copyright && settings.site_title && (
               <p className="typo-caption text-text-muted">© {new Date().getFullYear()} {settings.site_title} · {settings.copyright}</p>
             )}
-            <p className="typo-caption text-text-muted">Crafted with ♡ by Olgica</p>
+            {settings.dev_description && settings.dev_url && (
+              <a href={settings.dev_url} target="_blank" rel="noopener noreferrer" className="typo-caption text-stroke-strong">{settings.dev_description}</a>
+            )}
           </div>
 
         </div>
